@@ -1,0 +1,68 @@
+import { Translations } from './language.model';
+
+export const EN_TRANSLATIONS: Translations = {
+  'nav.home': 'Home',
+  'nav.about': 'About',
+  'nav.lessons': 'Lessons',
+  'nav.prices': 'Prices',
+  'nav.blog': 'Blog',
+  'nav.contact': 'Contact',
+  'language.label': 'Language',
+  'footer.description':
+    'Private English lessons in Budapest and online, built around clear goals and real practice.',
+  'footer.ready': 'Ready to improve your English?',
+  'footer.cta': 'Book a trial lesson',
+  'home.hero.eyebrow': 'Budapest and online',
+  'home.hero.title': 'Private English lessons for confident, practical communication',
+  'home.hero.lead':
+    'Practical, friendly English lessons for adults and teens who want clearer speaking, stronger grammar, and more confidence in real situations.',
+  'home.hero.primaryCta': 'Book a trial lesson',
+  'home.hero.secondaryCta': 'View lessons',
+  'home.hero.statExperience': 'years teaching',
+  'home.hero.statLevels': 'student levels',
+  'home.hero.statPersonal': 'personal lessons',
+  'home.hero.availableLocation': 'Online and Budapest',
+  'home.hero.availableTrial': 'Trial lessons available',
+  'home.intro.eyebrow': 'Meet your teacher',
+  'home.intro.title': 'Anna Kovacs',
+  'home.intro.copy':
+    'Lessons are goal-based and easy to follow: we agree on a focus, practise with realistic examples, and finish with clear next steps for your independent study.',
+  'home.lessons.eyebrow': 'Lessons and services',
+  'home.lessons.title': 'Focused support for real communication',
+  'home.lessons.copy':
+    'Choose a lesson type now, then later the same page can read lesson content from Spring Boot.',
+  'home.testimonials.eyebrow': 'Student feedback',
+  'home.testimonials.title': 'Clear, calm lessons with practical progress',
+  'home.testimonial1.quote':
+    'The lessons are calm, structured, and practical. I finally feel comfortable speaking at work.',
+  'home.testimonial1.name': 'Kata',
+  'home.testimonial1.context': 'Business English student',
+  'home.testimonial2.quote':
+    'Anna explained grammar clearly and gave me speaking tasks that matched my exam goals.',
+  'home.testimonial2.name': 'Mate',
+  'home.testimonial2.context': 'Exam preparation student',
+  'home.testimonial3.quote':
+    'Every lesson has a clear focus, useful feedback, and materials I can actually use.',
+  'home.testimonial3.name': 'Eszter',
+  'home.testimonial3.context': 'Conversation student',
+  'home.cta.eyebrow': 'Start simply',
+  'home.cta.title': 'Book a trial lesson and get a realistic learning plan.',
+  'home.cta.button': 'Contact Anna',
+  'about.eyebrow': 'About',
+  'about.copy':
+    'Lessons are built around clear goals, useful feedback, and realistic speaking practice.',
+  'about.experience': 'years of teaching experience',
+  'lessons.eyebrow': 'Lessons',
+  'lessons.title': 'Choose the format that matches your goal',
+  'prices.eyebrow': 'Prices',
+  'prices.title': 'Simple packages for steady progress',
+  'blog.eyebrow': 'Blog',
+  'blog.title': 'Short language learning notes',
+  'contact.eyebrow': 'Contact',
+  'contact.title': 'Tell me what you want to improve',
+  'contact.lead': 'This demo form is ready for a later Spring Boot contact endpoint.',
+  'contact.name': 'Name',
+  'contact.email': 'Email',
+  'contact.message': 'Message',
+  'contact.submit': 'Send message',
+};

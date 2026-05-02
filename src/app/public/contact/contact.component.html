@@ -1,28 +1,28 @@
 <section class="page-shell page-section">
   <div>
-    <p class="eyebrow">Contact</p>
-    <h1>Tell me what you want to improve</h1>
-    <p class="lead">This demo form is ready for a later Spring Boot contact endpoint.</p>
+    <p class="eyebrow">{{ t('contact.eyebrow') }}</p>
+    <h1>{{ t('contact.title') }}</h1>
+    <p class="lead">{{ t('contact.lead') }}</p>
   </div>
 
   <mat-card appearance="outlined">
     <form [formGroup]="contactForm" (ngSubmit)="submit()">
       <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ t('contact.name') }}</mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
+        <mat-label>{{ t('contact.email') }}</mat-label>
         <input matInput type="email" formControlName="email" />
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Message</mat-label>
+        <mat-label>{{ t('contact.message') }}</mat-label>
         <textarea matInput rows="5" formControlName="message"></textarea>
       </mat-form-field>
 
-      <button mat-flat-button type="submit">Send message</button>
+      <button mat-flat-button type="submit">{{ t('contact.submit') }}</button>
     </form>
   </mat-card>
 </section>

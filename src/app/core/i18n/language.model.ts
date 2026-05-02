@@ -1,0 +1,67 @@
+export type LanguageCode = 'hu' | 'en';
+
+export interface LanguageOption {
+  code: LanguageCode;
+  label: string;
+  flag: string;
+}
+
+export type TranslationKey =
+  | 'nav.home'
+  | 'nav.about'
+  | 'nav.lessons'
+  | 'nav.prices'
+  | 'nav.blog'
+  | 'nav.contact'
+  | 'language.label'
+  | 'footer.description'
+  | 'footer.ready'
+  | 'footer.cta'
+  | 'home.hero.eyebrow'
+  | 'home.hero.title'
+  | 'home.hero.lead'
+  | 'home.hero.primaryCta'
+  | 'home.hero.secondaryCta'
+  | 'home.hero.statExperience'
+  | 'home.hero.statLevels'
+  | 'home.hero.statPersonal'
+  | 'home.hero.availableLocation'
+  | 'home.hero.availableTrial'
+  | 'home.intro.eyebrow'
+  | 'home.intro.title'
+  | 'home.intro.copy'
+  | 'home.lessons.eyebrow'
+  | 'home.lessons.title'
+  | 'home.lessons.copy'
+  | 'home.testimonials.eyebrow'
+  | 'home.testimonials.title'
+  | 'home.testimonial1.quote'
+  | 'home.testimonial1.name'
+  | 'home.testimonial1.context'
+  | 'home.testimonial2.quote'
+  | 'home.testimonial2.name'
+  | 'home.testimonial2.context'
+  | 'home.testimonial3.quote'
+  | 'home.testimonial3.name'
+  | 'home.testimonial3.context'
+  | 'home.cta.eyebrow'
+  | 'home.cta.title'
+  | 'home.cta.button'
+  | 'about.eyebrow'
+  | 'about.copy'
+  | 'about.experience'
+  | 'lessons.eyebrow'
+  | 'lessons.title'
+  | 'prices.eyebrow'
+  | 'prices.title'
+  | 'blog.eyebrow'
+  | 'blog.title'
+  | 'contact.eyebrow'
+  | 'contact.title'
+  | 'contact.lead'
+  | 'contact.name'
+  | 'contact.email'
+  | 'contact.message'
+  | 'contact.submit';
+
+export type Translations = Record<TranslationKey, string>;

@@ -1,6 +1,6 @@
 <section class="page-shell page-section">
-  <p class="eyebrow">Prices</p>
-  <h1>Simple packages for steady progress</h1>
+  <p class="eyebrow">{{ t('prices.eyebrow') }}</p>
+  <h1>{{ t('prices.title') }}</h1>
 
   <div class="price-grid">
     @for (pricePackage of packages$ | async; track pricePackage.id) {

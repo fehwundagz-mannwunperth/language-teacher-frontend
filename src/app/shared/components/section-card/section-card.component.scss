@@ -3,6 +3,16 @@
   padding: 1.25rem;
   border-color: rgba(90, 106, 119, 0.18);
   background: rgba(255, 255, 255, 0.82);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.section-card:hover {
+  border-color: rgba(83, 127, 117, 0.4);
+  box-shadow: 0 1rem 2rem rgba(37, 49, 59, 0.08);
+  transform: translateY(-0.15rem);
 }
 
 .eyebrow {

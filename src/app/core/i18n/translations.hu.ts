@@ -1,0 +1,68 @@
+import { Translations } from './language.model';
+
+export const HU_TRANSLATIONS: Translations = {
+  'nav.home': 'Fooldal',
+  'nav.about': 'Rólam',
+  'nav.lessons': 'Órák',
+  'nav.prices': 'Árak',
+  'nav.blog': 'Blog',
+  'nav.contact': 'Kapcsolat',
+  'language.label': 'Nyelv',
+  'footer.description':
+    'Magán angolórák Budapesten és online, világos célokkal és valódi gyakorlással.',
+  'footer.ready': 'Készen állsz fejleszteni az angolod?',
+  'footer.cta': 'Próbaóra foglalása',
+  'home.hero.eyebrow': 'Budapest és online',
+  'home.hero.title': 'Magán angolórák magabiztos, gyakorlati kommunikációhoz',
+  'home.hero.lead':
+    'Barátságos, célorientált angolórák felnőtteknek és tinédzsereknek, akik szeretnének bátrabban beszélni, pontosabban használni a nyelvtant és valós helyzetekben fejlődni.',
+  'home.hero.primaryCta': 'Próbaóra foglalása',
+  'home.hero.secondaryCta': 'Órák megtekintése',
+  'home.hero.statExperience': 'év tapasztalat',
+  'home.hero.statLevels': 'tanulói szintek',
+  'home.hero.statPersonal': 'személyes órák',
+  'home.hero.availableLocation': 'Online és Budapesten',
+  'home.hero.availableTrial': 'Próbaórák elérhetők',
+  'home.intro.eyebrow': 'Ismerd meg a tanárt',
+  'home.intro.title': 'Anna Kovacs',
+  'home.intro.copy':
+    'Az órák célalapúak és könnyen követhetők: kijelölünk egy fókuszt, valós példákkal gyakorlunk, majd világos következő lépésekkel zárunk az önálló tanuláshoz.',
+  'home.lessons.eyebrow': 'Órák és szolgáltatások',
+  'home.lessons.title': 'Célzott támogatás valódi kommunikációhoz',
+  'home.lessons.copy':
+    'Válassz óratípust most, később ugyanez az oldal Spring Boot backendből is olvashatja a tartalmat.',
+  'home.testimonials.eyebrow': 'Tanulói visszajelzések',
+  'home.testimonials.title': 'Átlátható, nyugodt órák gyakorlati fejlődéssel',
+  'home.testimonial1.quote':
+    'Az órák nyugodtak, jól felépítettek és gyakorlatiasak. Végre magabiztosabban beszélek a munkahelyemen.',
+  'home.testimonial1.name': 'Kata',
+  'home.testimonial1.context': 'Business English tanuló',
+  'home.testimonial2.quote':
+    'Anna érthetően magyarázta a nyelvtant, és a vizsgacéljaimhoz illő beszédfeladatokat adott.',
+  'home.testimonial2.name': 'Máté',
+  'home.testimonial2.context': 'Vizsgafelkészítő tanuló',
+  'home.testimonial3.quote':
+    'Minden órának világos fókusza van, hasznos visszajelzéssel és tényleg használható anyagokkal.',
+  'home.testimonial3.name': 'Eszter',
+  'home.testimonial3.context': 'Társalgási angol tanuló',
+  'home.cta.eyebrow': 'Kezdd egyszerűen',
+  'home.cta.title': 'Foglalj próbaórát, és kapj reális tanulási tervet.',
+  'home.cta.button': 'Kapcsolatfelvétel Annával',
+  'about.eyebrow': 'Rólam',
+  'about.copy':
+    'Az órák világos célokra, hasznos visszajelzésre és életszerű beszédgyakorlatokra épülnek.',
+  'about.experience': 'év tanítási tapasztalat',
+  'lessons.eyebrow': 'Órák',
+  'lessons.title': 'Válaszd ki a célodhoz illő formátumot',
+  'prices.eyebrow': 'Árak',
+  'prices.title': 'Egyszerű csomagok folyamatos fejlődéshez',
+  'blog.eyebrow': 'Blog',
+  'blog.title': 'Rövid nyelvtanulási jegyzetek',
+  'contact.eyebrow': 'Kapcsolat',
+  'contact.title': 'Írd meg, miben szeretnél fejlődni',
+  'contact.lead': 'Ez a demo űrlap később Spring Boot kapcsolatfelvételi végpontra köthető.',
+  'contact.name': 'Név',
+  'contact.email': 'Email',
+  'contact.message': 'Üzenet',
+  'contact.submit': 'Üzenet küldése',
+};

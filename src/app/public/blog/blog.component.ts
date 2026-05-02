@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { BlogService } from '../../core/services/blog.service';
+import { TranslationKey } from '../../core/i18n/language.model';
+import { TranslationService } from '../../core/i18n/translation.service';
 
 @Component({
   selector: 'app-blog',
@@ -13,6 +15,11 @@ import { BlogService } from '../../core/services/blog.service';
 })
 export class BlogComponent {
   private readonly blogService = inject(BlogService);
+  private readonly translationService = inject(TranslationService);
 
   protected readonly posts$ = this.blogService.getPosts();
+
+  protected t(key: TranslationKey): string {
+    return this.translationService.translate(key);
+  }
 }

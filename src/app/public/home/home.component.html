@@ -1,26 +1,68 @@
 @if (profile$ | async; as profile) {
-  <section class="hero page-shell">
-    <div class="hero-copy">
-      <p class="eyebrow">{{ profile.location }}</p>
-      <h1>{{ profile.headline }}</h1>
-      <p class="lead">{{ profile.bio }}</p>
-      <div class="hero-actions">
-        <a mat-flat-button routerLink="/contact">Book a trial lesson</a>
-        <a mat-stroked-button routerLink="/lessons">View lessons</a>
+  <section class="hero">
+    <div class="hero-inner page-shell">
+      <div class="hero-copy">
+        <p class="eyebrow">{{ t('home.hero.eyebrow') }}</p>
+        <h1>{{ t('home.hero.title') }}</h1>
+        <p class="lead">
+          {{ t('home.hero.lead') }}
+        </p>
+        <div class="hero-actions">
+          <a mat-flat-button routerLink="/contact">{{ t('home.hero.primaryCta') }}</a>
+          <a mat-stroked-button routerLink="/lessons">{{ t('home.hero.secondaryCta') }}</a>
+        </div>
+        <dl class="hero-stats" aria-label="Teaching highlights">
+          <div>
+            <dt>{{ profile.yearsExperience }}+</dt>
+            <dd>{{ t('home.hero.statExperience') }}</dd>
+          </div>
+          <div>
+            <dt>A2-C1</dt>
+            <dd>{{ t('home.hero.statLevels') }}</dd>
+          </div>
+          <div>
+            <dt>1:1</dt>
+            <dd>{{ t('home.hero.statPersonal') }}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hero-visual">
+        <img
+          src="/images/teacher-hero.png"
+          width="900"
+          height="900"
+          alt="Private English teacher in a calm teaching studio"
+        />
+        <div class="availability-card" aria-label="Lesson availability">
+          <span>{{ t('home.hero.availableLocation') }}</span>
+          <strong>{{ t('home.hero.availableTrial') }}</strong>
+        </div>
       </div>
     </div>
-    <div class="hero-panel" aria-label="Teacher profile summary">
-      <span>{{ profile.yearsExperience }}+ years experience</span>
-      <strong>{{ profile.name }}</strong>
-      <p>{{ profile.languages.join(' and ') }} lessons tailored to your goals.</p>
+  </section>
+
+  <section class="intro-section">
+    <div class="page-shell intro-grid">
+      <div>
+        <p class="eyebrow">{{ t('home.intro.eyebrow') }}</p>
+        <h2>{{ t('home.intro.title') }}</h2>
+      </div>
+      <div class="intro-copy">
+        <p>{{ profile.bio }}</p>
+        <p>{{ t('home.intro.copy') }}</p>
+      </div>
     </div>
   </section>
 }
 
-<section class="page-shell section">
+<section class="page-shell section lessons-section">
   <div class="section-heading">
-    <p class="eyebrow">Lessons</p>
-    <h2>Practical support for real communication</h2>
+    <p class="eyebrow">{{ t('home.lessons.eyebrow') }}</p>
+    <h2>{{ t('home.lessons.title') }}</h2>
+    <p>
+      {{ t('home.lessons.copy') }}
+    </p>
   </div>
 
   <div class="card-grid">
@@ -32,4 +74,31 @@
       />
     }
   </div>
+</section>
+
+<section class="testimonials-section">
+  <div class="page-shell">
+    <div class="section-heading">
+      <p class="eyebrow">{{ t('home.testimonials.eyebrow') }}</p>
+      <h2>{{ t('home.testimonials.title') }}</h2>
+    </div>
+
+    <div class="testimonial-grid">
+      @for (testimonial of testimonials; track testimonial.nameKey) {
+        <mat-card appearance="outlined">
+          <p class="quote">"{{ t(testimonial.quoteKey) }}"</p>
+          <strong>{{ t(testimonial.nameKey) }}</strong>
+          <span>{{ t(testimonial.contextKey) }}</span>
+        </mat-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="page-shell cta-section">
+  <div>
+    <p class="eyebrow">{{ t('home.cta.eyebrow') }}</p>
+    <h2>{{ t('home.cta.title') }}</h2>
+  </div>
+  <a mat-flat-button routerLink="/contact">{{ t('home.cta.button') }}</a>
 </section>

@@ -5,6 +5,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { TranslationKey } from '../../core/i18n/language.model';
+import { TranslationService } from '../../core/i18n/translation.service';
+
 @Component({
   selector: 'app-contact',
   imports: [MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule],
@@ -13,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class ContactComponent {
   private readonly formBuilder = inject(FormBuilder);
+  private readonly translationService = inject(TranslationService);
 
   protected readonly contactForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
@@ -23,5 +27,9 @@ export class ContactComponent {
   protected submit(): void {
     // Future Spring Boot endpoint: POST /api/public/contact
     this.contactForm.markAllAsTouched();
+  }
+
+  protected t(key: TranslationKey): string {
+    return this.translationService.translate(key);
   }
 }
