@@ -116,6 +116,36 @@ main {
   color: var(--app-ink);
 }
 
+.footer-provider {
+  color: var(--app-muted);
+}
+
+.footer-provider h2 {
+  margin: 0 0 0.8rem;
+  color: var(--app-ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.footer-provider dl {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.footer-provider dt {
+  margin-bottom: 0.15rem;
+  color: var(--app-ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.footer-provider dd {
+  margin: 0;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
 @media (min-width: 760px) {
   .desktop-nav {
     display: flex;
@@ -126,7 +156,10 @@ main {
   }
 
   .footer-inner {
-    grid-template-columns: minmax(16rem, 1.2fr) 0.6fr minmax(12rem, 0.7fr);
+    grid-template-columns: minmax(14rem, 1.1fr) minmax(7rem, 0.45fr) minmax(11rem, 0.65fr) minmax(
+        17rem,
+        1fr
+      );
     align-items: start;
   }
 }

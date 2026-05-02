@@ -69,5 +69,38 @@
       <span>{{ t('footer.ready') }}</span>
       <a routerLink="/contact">{{ t('footer.cta') }}</a>
     </div>
+
+    @if (footerProviderInfo$ | async; as providerInfo) {
+      <section class="footer-provider" aria-labelledby="footer-provider-title">
+        <h2 id="footer-provider-title">Szolgáltató</h2>
+
+        <dl>
+          <div>
+            <dt>Név</dt>
+            <dd>{{ providerInfo.companyName }}</dd>
+          </div>
+
+          <div>
+            <dt>Székhely</dt>
+            <dd>{{ providerInfo.registeredOffice }}</dd>
+          </div>
+
+          <div>
+            <dt>Adószám</dt>
+            <dd>{{ providerInfo.taxNumber }}</dd>
+          </div>
+
+          <div>
+            <dt>Szolgáltatást nyújtó személy</dt>
+            <dd>{{ providerInfo.serviceProviderPerson }}</dd>
+          </div>
+
+          <div>
+            <dt>Nyilvántartásba vételi szám</dt>
+            <dd>{{ providerInfo.registrationNumber }}</dd>
+          </div>
+        </dl>
+      </section>
+    }
   </div>
 </footer>
