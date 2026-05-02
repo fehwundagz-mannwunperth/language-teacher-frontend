@@ -38,6 +38,11 @@ export class PublicLayoutComponent {
     { labelKey: 'nav.blog', path: '/blog' },
     { labelKey: 'nav.contact', path: '/contact' },
   ];
+  protected readonly footerItems: { labelKey: TranslationKey; path: string }[] = [
+    ...this.navItems,
+    { labelKey: 'nav.termsAndConditions', path: '/terms-and-conditions' },
+    { labelKey: 'nav.privacyPolicy', path: '/privacy-policy' },
+  ];
 
   protected t(key: TranslationKey): string {
     return this.translationService.translate(key);

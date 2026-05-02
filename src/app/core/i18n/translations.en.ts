@@ -7,6 +7,8 @@ export const EN_TRANSLATIONS: Translations = {
   'nav.prices': 'Prices',
   'nav.blog': 'Blog',
   'nav.contact': 'Contact',
+  'nav.termsAndConditions': 'Terms and Conditions',
+  'nav.privacyPolicy': 'Privacy Policy',
   'language.label': 'Language',
   'footer.description':
     'Private English lessons in Budapest and online, built around clear goals and real practice.',
@@ -65,4 +67,10 @@ export const EN_TRANSLATIONS: Translations = {
   'contact.email': 'Email',
   'contact.message': 'Message',
   'contact.submit': 'Send message',
+  'legal.terms.eyebrow': 'Legal',
+  'legal.terms.title': 'Terms and Conditions',
+  'legal.terms.placeholder': 'Terms and Conditions content will be added here later.',
+  'legal.privacy.eyebrow': 'Legal',
+  'legal.privacy.title': 'Privacy Policy',
+  'legal.privacy.placeholder': 'Privacy Policy content will be added here later.',
 };

@@ -60,7 +60,7 @@
     </div>
 
     <nav aria-label="Footer navigation">
-      @for (item of navItems; track item.path) {
+      @for (item of footerItems; track item.path) {
         <a [routerLink]="item.path">{{ t(item.labelKey) }}</a>
       }
     </nav>

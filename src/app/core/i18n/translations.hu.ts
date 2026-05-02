@@ -7,6 +7,8 @@ export const HU_TRANSLATIONS: Translations = {
   'nav.prices': 'Árak',
   'nav.blog': 'Blog',
   'nav.contact': 'Kapcsolat',
+  'nav.termsAndConditions': 'Általános szerződési feltételek',
+  'nav.privacyPolicy': 'Adatkezelési tájékoztató és szabályzat',
   'language.label': 'Nyelv',
   'footer.description':
     'Magán angolórák Budapesten és online, világos célokkal és valódi gyakorlással.',
@@ -65,4 +67,11 @@ export const HU_TRANSLATIONS: Translations = {
   'contact.email': 'Email',
   'contact.message': 'Üzenet',
   'contact.submit': 'Üzenet küldése',
+  'legal.terms.eyebrow': 'Jogi információk',
+  'legal.terms.title': 'Általános szerződési feltételek',
+  'legal.terms.placeholder': 'Az Általános szerződési feltételek tartalma később kerül ide.',
+  'legal.privacy.eyebrow': 'Jogi információk',
+  'legal.privacy.title': 'Adatkezelési tájékoztató és szabályzat',
+  'legal.privacy.placeholder':
+    'Az Adatkezelési tájékoztató és szabályzat tartalma később kerül ide.',
 };

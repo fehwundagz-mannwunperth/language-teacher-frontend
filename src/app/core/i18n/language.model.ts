@@ -13,6 +13,8 @@ export type TranslationKey =
   | 'nav.prices'
   | 'nav.blog'
   | 'nav.contact'
+  | 'nav.termsAndConditions'
+  | 'nav.privacyPolicy'
   | 'language.label'
   | 'footer.description'
   | 'footer.ready'
@@ -62,6 +64,12 @@ export type TranslationKey =
   | 'contact.name'
   | 'contact.email'
   | 'contact.message'
-  | 'contact.submit';
+  | 'contact.submit'
+  | 'legal.terms.eyebrow'
+  | 'legal.terms.title'
+  | 'legal.terms.placeholder'
+  | 'legal.privacy.eyebrow'
+  | 'legal.privacy.title'
+  | 'legal.privacy.placeholder';
 
 export type Translations = Record<TranslationKey, string>;
