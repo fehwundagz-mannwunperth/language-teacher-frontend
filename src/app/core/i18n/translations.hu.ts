@@ -70,6 +70,13 @@ export const HU_TRANSLATIONS: Translations = {
   'legal.terms.eyebrow': 'Jogi információk',
   'legal.terms.title': 'Általános szerződési feltételek',
   'legal.terms.placeholder': 'Az Általános szerződési feltételek tartalma később kerül ide.',
+  'legal.terms.sections.contractFormation': 'Szerződés létrejötte',
+  'legal.terms.sections.serviceDescription': 'Szolgáltatás leírása',
+  'legal.terms.sections.paymentTerms': 'Fizetési feltételek',
+  'legal.terms.sections.cancellationPolicy': 'Lemondási feltételek',
+  'legal.terms.sections.complaintHandling': 'Panaszkezelés',
+  'legal.terms.sections.copyrightNotice': 'Szerzői jogi tájékoztató',
+  'legal.terms.sections.cookieInformation': 'Süti információk',
   'legal.privacy.eyebrow': 'Jogi információk',
   'legal.privacy.title': 'Adatkezelési tájékoztató és szabályzat',
   'legal.privacy.placeholder':

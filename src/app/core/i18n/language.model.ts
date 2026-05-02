@@ -68,6 +68,13 @@ export type TranslationKey =
   | 'legal.terms.eyebrow'
   | 'legal.terms.title'
   | 'legal.terms.placeholder'
+  | 'legal.terms.sections.contractFormation'
+  | 'legal.terms.sections.serviceDescription'
+  | 'legal.terms.sections.paymentTerms'
+  | 'legal.terms.sections.cancellationPolicy'
+  | 'legal.terms.sections.complaintHandling'
+  | 'legal.terms.sections.copyrightNotice'
+  | 'legal.terms.sections.cookieInformation'
   | 'legal.privacy.eyebrow'
   | 'legal.privacy.title'
   | 'legal.privacy.placeholder';

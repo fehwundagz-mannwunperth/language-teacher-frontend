@@ -7,13 +7,39 @@ h1 {
   font-size: clamp(2rem, 5vw, 3rem);
 }
 
+.terms-sections {
+  display: grid;
+  gap: 1rem;
+  max-width: 56rem;
+}
+
 mat-card {
-  max-width: 48rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem;
   padding: 1.5rem;
   background: #ffffff;
 }
 
+span {
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--app-soft-blue);
+  color: var(--app-accent);
+  font-weight: 700;
+}
+
+h2 {
+  margin: 0 0 0.6rem;
+  color: var(--app-ink);
+  font-size: 1.2rem;
+}
+
 p {
+  margin: 0;
   color: var(--app-muted);
   line-height: 1.7;
 }
