@@ -1,0 +1,195 @@
+.lead {
+  max-width: 44rem;
+  margin: 0 0 1.5rem;
+  color: var(--app-muted);
+  line-height: 1.7;
+}
+
+.calendar-card {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: #ffffff;
+}
+
+.calendar-toolbar {
+  display: grid;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.calendar-toolbar button {
+  justify-self: start;
+}
+
+.calendar-toolbar mat-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  font-size: 1.1rem;
+}
+
+.week-label {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.week-label span {
+  color: var(--app-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.week-label strong {
+  color: var(--app-ink);
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+}
+
+.toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.legend-item mat-icon,
+.slot-status mat-icon {
+  width: 1rem;
+  height: 1rem;
+  font-size: 1rem;
+}
+
+.calendar-scroll {
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: 4.75rem repeat(5, minmax(8.5rem, 1fr));
+  gap: 0.55rem;
+  min-width: 50rem;
+}
+
+.time-heading,
+.day-heading,
+.time-cell {
+  color: var(--app-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.time-heading,
+.day-heading {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 0.4rem 0;
+  background: #ffffff;
+}
+
+.day-heading {
+  color: var(--app-ink);
+  text-transform: capitalize;
+}
+
+.time-cell {
+  display: grid;
+  align-items: start;
+  padding-top: 0.75rem;
+}
+
+.slot {
+  display: grid;
+  gap: 0.35rem;
+  min-height: 4rem;
+  padding: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  font: inherit;
+  text-align: left;
+}
+
+.slot:disabled {
+  cursor: default;
+}
+
+.slot-time {
+  color: var(--app-ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.slot-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status-available {
+  border-color: rgba(46, 125, 50, 0.28);
+  background: #e7f5ea;
+  color: #2e7d32;
+}
+
+.status-booked {
+  border-color: rgba(198, 40, 40, 0.25);
+  background: #fde8e8;
+  color: #c62828;
+}
+
+.status-pending {
+  border-color: rgba(245, 166, 35, 0.32);
+  background: #fff4d7;
+  color: #9a6500;
+}
+
+.status-unavailable {
+  border-color: rgba(102, 117, 128, 0.18);
+  background: #eef1f3;
+  color: #667580;
+}
+
+@media (max-width: 640px) {
+  .calendar-card {
+    margin-inline: -0.25rem;
+  }
+
+  .calendar-grid {
+    grid-template-columns: 4.25rem repeat(5, minmax(7.75rem, 1fr));
+    min-width: 44rem;
+  }
+
+  .slot {
+    min-height: 3.75rem;
+    padding: 0.65rem;
+  }
+}
+
+@media (min-width: 820px) {
+  .calendar-toolbar {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .week-label {
+    justify-items: center;
+    text-align: center;
+  }
+}

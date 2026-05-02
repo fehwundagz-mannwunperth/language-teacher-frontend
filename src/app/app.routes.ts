@@ -27,6 +27,11 @@ export const routes: Routes = [
           import('./public/prices/prices.component').then((m) => m.PricesComponent),
       },
       {
+        path: 'calendar',
+        loadComponent: () =>
+          import('./public/calendar/calendar.component').then((m) => m.CalendarComponent),
+      },
+      {
         path: 'blog',
         loadComponent: () => import('./public/blog/blog.component').then((m) => m.BlogComponent),
       },

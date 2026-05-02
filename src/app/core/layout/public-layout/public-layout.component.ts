@@ -35,6 +35,7 @@ export class PublicLayoutComponent {
     { labelKey: 'nav.about', path: '/about' },
     { labelKey: 'nav.lessons', path: '/lessons' },
     { labelKey: 'nav.prices', path: '/prices' },
+    { labelKey: 'nav.calendar', path: '/calendar' },
     { labelKey: 'nav.blog', path: '/blog' },
     { labelKey: 'nav.contact', path: '/contact' },
   ];

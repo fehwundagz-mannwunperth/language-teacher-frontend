@@ -1,0 +1,85 @@
+<section class="page-shell page-section">
+  <p class="eyebrow">{{ t('calendar.eyebrow') }}</p>
+  <h1>{{ t('calendar.title') }}</h1>
+  <p class="lead">{{ t('calendar.lead') }}</p>
+
+  @if (calendar$ | async; as calendar) {
+    <mat-card class="calendar-card" appearance="outlined">
+      <div class="calendar-toolbar">
+        <button mat-stroked-button type="button" (click)="goToPreviousWeek()">
+          <mat-icon aria-hidden="true">chevron_left</mat-icon>
+          {{ t('calendar.previousWeek') }}
+        </button>
+
+        <div class="week-label">
+          <span>{{ t('calendar.weekLabel') }}</span>
+          <strong>{{ formatWeekRange(calendar.weekStart, calendar.weekEnd) }}</strong>
+        </div>
+
+        <div class="toolbar-actions">
+          <button mat-stroked-button type="button" (click)="goToThisWeek()">
+            <mat-icon aria-hidden="true">today</mat-icon>
+            {{ t('calendar.thisWeek') }}
+          </button>
+
+          <button mat-stroked-button type="button" (click)="goToNextWeek()">
+            {{ t('calendar.nextWeek') }}
+            <mat-icon aria-hidden="true">chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div class="legend" aria-label="Calendar status legend">
+        @for (status of statuses; track status) {
+          <span
+            class="legend-item"
+            [class.status-available]="status === 'AVAILABLE'"
+            [class.status-booked]="status === 'BOOKED'"
+            [class.status-pending]="status === 'PENDING'"
+            [class.status-unavailable]="status === 'UNAVAILABLE'"
+          >
+            @if (status === 'PENDING') {
+              <mat-icon aria-hidden="true">help</mat-icon>
+            }
+            {{ t(statusLabelKeys[status]) }}
+          </span>
+        }
+      </div>
+
+      <div class="calendar-scroll">
+        <div class="calendar-grid">
+          <div class="time-heading">{{ t('calendar.time') }}</div>
+          @for (day of calendar.days; track day.date) {
+            <div class="day-heading">{{ formatDay(day.date) }}</div>
+          }
+
+          @for (timeLabel of calendar.timeLabels; track timeLabel; let slotIndex = $index) {
+            <div class="time-cell">{{ timeLabel }}</div>
+
+            @for (day of calendar.days; track day.date) {
+              @let slot = day.slots[slotIndex];
+              <button
+                type="button"
+                class="slot"
+                [class.status-available]="slot.status === 'AVAILABLE'"
+                [class.status-booked]="slot.status === 'BOOKED'"
+                [class.status-pending]="slot.status === 'PENDING'"
+                [class.status-unavailable]="slot.status === 'UNAVAILABLE'"
+                [disabled]="slot.status !== 'AVAILABLE'"
+                [attr.aria-label]="formatSlotTime(slot) + ' ' + t(statusLabelKeys[slot.status])"
+              >
+                <span class="slot-time">{{ formatSlotTime(slot) }}</span>
+                <span class="slot-status">
+                  @if (slot.status === 'PENDING') {
+                    <mat-icon aria-hidden="true">help</mat-icon>
+                  }
+                  {{ t(statusLabelKeys[slot.status]) }}
+                </span>
+              </button>
+            }
+          }
+        </div>
+      </div>
+    </mat-card>
+  }
+</section>
