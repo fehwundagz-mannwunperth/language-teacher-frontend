@@ -1,0 +1,35 @@
+@if (profile$ | async; as profile) {
+  <section class="hero page-shell">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ profile.location }}</p>
+      <h1>{{ profile.headline }}</h1>
+      <p class="lead">{{ profile.bio }}</p>
+      <div class="hero-actions">
+        <a mat-flat-button routerLink="/contact">Book a trial lesson</a>
+        <a mat-stroked-button routerLink="/lessons">View lessons</a>
+      </div>
+    </div>
+    <div class="hero-panel" aria-label="Teacher profile summary">
+      <span>{{ profile.yearsExperience }}+ years experience</span>
+      <strong>{{ profile.name }}</strong>
+      <p>{{ profile.languages.join(' and ') }} lessons tailored to your goals.</p>
+    </div>
+  </section>
+}
+
+<section class="page-shell section">
+  <div class="section-heading">
+    <p class="eyebrow">Lessons</p>
+    <h2>Practical support for real communication</h2>
+  </div>
+
+  <div class="card-grid">
+    @for (lesson of lessons$ | async; track lesson.id) {
+      <app-section-card
+        [title]="lesson.title"
+        [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
+        [description]="lesson.description"
+      />
+    }
+  </div>
+</section>

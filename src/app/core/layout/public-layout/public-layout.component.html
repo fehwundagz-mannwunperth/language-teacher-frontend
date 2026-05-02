@@ -1,0 +1,40 @@
+<mat-toolbar class="site-header">
+  <a class="brand" routerLink="/" aria-label="Anna Language Studio home">
+    <span class="brand-mark">A</span>
+    <span>Anna Language Studio</span>
+  </a>
+
+  <nav class="desktop-nav" aria-label="Main navigation">
+    @for (item of navItems; track item.path) {
+      <a
+        mat-button
+        [routerLink]="item.path"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+
+  <button mat-stroked-button class="mobile-menu-button" [matMenuTriggerFor]="mobileMenu">
+    Menu
+  </button>
+  <mat-menu #mobileMenu="matMenu">
+    @for (item of navItems; track item.path) {
+      <a mat-menu-item [routerLink]="item.path">{{ item.label }}</a>
+    }
+  </mat-menu>
+</mat-toolbar>
+
+<main>
+  <router-outlet />
+</main>
+
+<footer class="site-footer">
+  <div>
+    <strong>Anna Language Studio</strong>
+    <p>Private English lessons in Budapest and online.</p>
+  </div>
+  <a routerLink="/contact">Book a trial lesson</a>
+</footer>

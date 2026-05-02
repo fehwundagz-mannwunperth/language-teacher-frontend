@@ -1,3 +1,71 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./core/layout/public-layout/public-layout.component').then(
+        (m) => m.PublicLayoutComponent,
+      ),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./public/home/home.component').then((m) => m.HomeComponent),
+      },
+      {
+        path: 'about',
+        loadComponent: () => import('./public/about/about.component').then((m) => m.AboutComponent),
+      },
+      {
+        path: 'lessons',
+        loadComponent: () =>
+          import('./public/lessons/lessons.component').then((m) => m.LessonsComponent),
+      },
+      {
+        path: 'prices',
+        loadComponent: () =>
+          import('./public/prices/prices.component').then((m) => m.PricesComponent),
+      },
+      {
+        path: 'blog',
+        loadComponent: () => import('./public/blog/blog.component').then((m) => m.BlogComponent),
+      },
+      {
+        path: 'contact',
+        loadComponent: () =>
+          import('./public/contact/contact.component').then((m) => m.ContactComponent),
+      },
+    ],
+  },
+  {
+    path: 'admin',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./admin/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+      },
+      {
+        path: 'blog-editor',
+        loadComponent: () =>
+          import('./admin/blog-editor/blog-editor.component').then((m) => m.BlogEditorComponent),
+      },
+      {
+        path: 'content-editor',
+        loadComponent: () =>
+          import('./admin/content-editor/content-editor.component').then(
+            (m) => m.ContentEditorComponent,
+          ),
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
+];

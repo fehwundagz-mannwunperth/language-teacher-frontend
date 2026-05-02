@@ -1,0 +1,26 @@
+.admin-page {
+  width: min(100% - 2rem, 48rem);
+  margin-inline: auto;
+  padding-block: 3rem;
+}
+
+h1 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+mat-card {
+  padding: 1.4rem;
+  background: #ffffff;
+}
+
+p {
+  color: var(--app-muted);
+  line-height: 1.6;
+}
+
+.eyebrow {
+  color: var(--app-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+}

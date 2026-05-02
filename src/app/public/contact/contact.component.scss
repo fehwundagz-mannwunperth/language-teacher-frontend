@@ -1,0 +1,39 @@
+.page-section {
+  display: grid;
+  gap: 2rem;
+  padding-block: 3rem 5rem;
+}
+
+h1 {
+  max-width: 36rem;
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.lead {
+  max-width: 34rem;
+  color: var(--app-muted);
+  line-height: 1.7;
+}
+
+mat-card {
+  padding: 1.4rem;
+  background: #ffffff;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+.eyebrow {
+  color: var(--app-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (min-width: 860px) {
+  .page-section {
+    grid-template-columns: minmax(0, 1fr) minmax(24rem, 30rem);
+  }
+}

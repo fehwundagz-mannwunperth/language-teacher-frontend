@@ -1,0 +1,14 @@
+<section class="page-shell page-section">
+  <p class="eyebrow">Lessons</p>
+  <h1>Choose the format that matches your goal</h1>
+
+  <div class="card-grid">
+    @for (lesson of lessons$ | async; track lesson.id) {
+      <app-section-card
+        [title]="lesson.title"
+        [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
+        [description]="lesson.description"
+      />
+    }
+  </div>
+</section>

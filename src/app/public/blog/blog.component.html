@@ -1,0 +1,19 @@
+<section class="page-shell page-section">
+  <p class="eyebrow">Blog</p>
+  <h1>Short language learning notes</h1>
+
+  <div class="post-grid">
+    @for (post of posts$ | async; track post.id) {
+      <mat-card appearance="outlined">
+        <time>{{ post.publishedAt | date: 'mediumDate' }}</time>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt }}</p>
+        <mat-chip-set>
+          @for (tag of post.tags; track tag) {
+            <mat-chip>{{ tag }}</mat-chip>
+          }
+        </mat-chip-set>
+      </mat-card>
+    }
+  </div>
+</section>

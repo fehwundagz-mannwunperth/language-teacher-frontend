@@ -1,0 +1,92 @@
+.hero {
+  display: grid;
+  gap: 2rem;
+  padding-block: 4rem 3rem;
+}
+
+.hero-copy {
+  max-width: 44rem;
+}
+
+h1 {
+  margin: 0;
+  max-width: 58rem;
+  font-size: clamp(2.35rem, 7vw, 4.8rem);
+  line-height: 1.02;
+}
+
+.lead {
+  margin: 1.25rem 0 0;
+  max-width: 40rem;
+  color: var(--app-muted);
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.75rem;
+}
+
+.hero-panel {
+  align-self: stretch;
+  padding: 1.5rem;
+  border: 1px solid rgba(90, 106, 119, 0.16);
+  border-radius: 0.5rem;
+  background: #ffffff;
+}
+
+.hero-panel span {
+  color: var(--app-accent);
+  font-weight: 700;
+}
+
+.hero-panel strong {
+  display: block;
+  margin-top: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.hero-panel p {
+  color: var(--app-muted);
+}
+
+.section {
+  padding-block: 2rem 4rem;
+}
+
+.section-heading {
+  max-width: 42rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  color: var(--app-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    align-items: end;
+    padding-block: 6rem 4rem;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

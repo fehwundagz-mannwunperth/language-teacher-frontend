@@ -1,0 +1,13 @@
+@if (profile$ | async; as profile) {
+  <section class="page-shell page-section">
+    <p class="eyebrow">About</p>
+    <h1>{{ profile.name }}</h1>
+    <mat-card appearance="outlined">
+      <p>{{ profile.bio }}</p>
+      <p>
+        Lessons are built around clear goals, useful feedback, and realistic speaking practice.
+      </p>
+      <p>{{ profile.location }} / {{ profile.yearsExperience }} years of teaching experience.</p>
+    </mat-card>
+  </section>
+}

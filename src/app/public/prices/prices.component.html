@@ -1,0 +1,19 @@
+<section class="page-shell page-section">
+  <p class="eyebrow">Prices</p>
+  <h1>Simple packages for steady progress</h1>
+
+  <div class="price-grid">
+    @for (pricePackage of packages$ | async; track pricePackage.id) {
+      <mat-card appearance="outlined">
+        <h2>{{ pricePackage.title }}</h2>
+        <strong>{{ pricePackage.price | currency: pricePackage.currency : 'symbol-narrow' : '1.0-0' }}</strong>
+        <p>{{ pricePackage.description }}</p>
+        <mat-list>
+          @for (feature of pricePackage.features; track feature) {
+            <mat-list-item>{{ feature }}</mat-list-item>
+          }
+        </mat-list>
+      </mat-card>
+    }
+  </div>
+</section>
