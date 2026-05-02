@@ -83,6 +83,8 @@ export const EN_TRANSLATIONS: Translations = {
   'legal.terms.sections.complaintHandling': 'Complaint Handling',
   'legal.terms.sections.copyrightNotice': 'Copyright Notice',
   'legal.terms.sections.cookieInformation': 'Cookie Information',
+  'legal.terms.cookieInformation.text':
+    'This website may use essential cookies required for basic site operation and language preference handling. Analytics or marketing cookies are not enabled yet; if they are introduced later, this section will be updated with the relevant details and consent options.',
   'legal.privacy.eyebrow': 'Legal',
   'legal.privacy.title': 'Privacy Policy',
   'legal.privacy.placeholder': 'Privacy Policy content will be added here later.',

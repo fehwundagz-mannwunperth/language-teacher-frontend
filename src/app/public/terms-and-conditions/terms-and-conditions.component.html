@@ -24,7 +24,11 @@
           <span>{{ section.order }}</span>
           <div>
             <h2>{{ t(sectionTitleKeys[section.key]) }}</h2>
-            <p>{{ section.content }}</p>
+            @if (section.key === 'cookieInformation') {
+              <p>{{ t('legal.terms.cookieInformation.text') }}</p>
+            } @else {
+              <p>{{ section.content }}</p>
+            }
           </div>
         </mat-card>
       }

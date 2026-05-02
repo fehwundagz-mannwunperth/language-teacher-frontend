@@ -81,6 +81,7 @@ export type TranslationKey =
   | 'legal.terms.sections.complaintHandling'
   | 'legal.terms.sections.copyrightNotice'
   | 'legal.terms.sections.cookieInformation'
+  | 'legal.terms.cookieInformation.text'
   | 'legal.privacy.eyebrow'
   | 'legal.privacy.title'
   | 'legal.privacy.placeholder'

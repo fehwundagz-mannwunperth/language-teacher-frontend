@@ -83,6 +83,8 @@ export const HU_TRANSLATIONS: Translations = {
   'legal.terms.sections.complaintHandling': 'Panaszkezelés',
   'legal.terms.sections.copyrightNotice': 'Szerzői jogi tájékoztató',
   'legal.terms.sections.cookieInformation': 'Süti információk',
+  'legal.terms.cookieInformation.text':
+    'A weboldal a működéshez és a nyelvi beállítás kezeléséhez szükséges alapvető sütiket használhat. Analitikai vagy marketing sütik jelenleg nincsenek bekapcsolva; ha később ilyenek bevezetésre kerülnek, ez a szakasz kiegészül a szükséges részletekkel és hozzájárulási lehetőségekkel.',
   'legal.privacy.eyebrow': 'Jogi információk',
   'legal.privacy.title': 'Adatkezelési tájékoztató és szabályzat',
   'legal.privacy.placeholder':
