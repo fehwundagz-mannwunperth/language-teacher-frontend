@@ -87,4 +87,11 @@ export const HU_TRANSLATIONS: Translations = {
   'legal.privacy.title': 'Adatkezelési tájékoztató és szabályzat',
   'legal.privacy.placeholder':
     'Az Adatkezelési tájékoztató és szabályzat tartalma később kerül ide.',
+  'legal.privacy.sections.dataController': 'Adatkezelő',
+  'legal.privacy.sections.processedData': 'Kezelt adatok',
+  'legal.privacy.sections.purposeOfProcessing': 'Adatkezelés célja',
+  'legal.privacy.sections.legalBasis': 'Jogalap',
+  'legal.privacy.sections.dataRetention': 'Adatmegőrzés',
+  'legal.privacy.sections.dataSubjectRights': 'Érintetti jogok',
+  'legal.privacy.sections.contactForPrivacyRequests': 'Adatvédelmi megkeresések kapcsolata',
 };

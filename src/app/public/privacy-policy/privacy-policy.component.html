@@ -2,7 +2,17 @@
   <p class="eyebrow">{{ t('legal.privacy.eyebrow') }}</p>
   <h1>{{ t('legal.privacy.title') }}</h1>
 
-  <mat-card appearance="outlined">
-    <p>{{ t('legal.privacy.placeholder') }}</p>
-  </mat-card>
+  @if (privacyPolicy$ | async; as privacyPolicy) {
+    <div class="privacy-sections">
+      @for (section of privacyPolicy.sections; track section.key) {
+        <mat-card appearance="outlined">
+          <span>{{ section.order }}</span>
+          <div>
+            <h2>{{ t(sectionTitleKeys[section.key]) }}</h2>
+            <p>{{ section.content }}</p>
+          </div>
+        </mat-card>
+      }
+    </div>
+  }
 </section>

@@ -83,6 +83,13 @@ export type TranslationKey =
   | 'legal.terms.sections.cookieInformation'
   | 'legal.privacy.eyebrow'
   | 'legal.privacy.title'
-  | 'legal.privacy.placeholder';
+  | 'legal.privacy.placeholder'
+  | 'legal.privacy.sections.dataController'
+  | 'legal.privacy.sections.processedData'
+  | 'legal.privacy.sections.purposeOfProcessing'
+  | 'legal.privacy.sections.legalBasis'
+  | 'legal.privacy.sections.dataRetention'
+  | 'legal.privacy.sections.dataSubjectRights'
+  | 'legal.privacy.sections.contactForPrivacyRequests';
 
 export type Translations = Record<TranslationKey, string>;

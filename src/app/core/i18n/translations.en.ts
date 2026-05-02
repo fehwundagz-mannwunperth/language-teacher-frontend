@@ -86,4 +86,11 @@ export const EN_TRANSLATIONS: Translations = {
   'legal.privacy.eyebrow': 'Legal',
   'legal.privacy.title': 'Privacy Policy',
   'legal.privacy.placeholder': 'Privacy Policy content will be added here later.',
+  'legal.privacy.sections.dataController': 'Data Controller',
+  'legal.privacy.sections.processedData': 'Processed Data',
+  'legal.privacy.sections.purposeOfProcessing': 'Purpose of Processing',
+  'legal.privacy.sections.legalBasis': 'Legal Basis',
+  'legal.privacy.sections.dataRetention': 'Data Retention',
+  'legal.privacy.sections.dataSubjectRights': 'Data Subject Rights',
+  'legal.privacy.sections.contactForPrivacyRequests': 'Contact for Privacy Requests',
 };
