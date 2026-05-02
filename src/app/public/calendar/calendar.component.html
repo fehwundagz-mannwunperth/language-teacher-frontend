@@ -66,6 +66,7 @@
                 [class.status-pending]="slot.status === 'PENDING'"
                 [class.status-unavailable]="slot.status === 'UNAVAILABLE'"
                 [disabled]="slot.status !== 'AVAILABLE'"
+                (click)="openBookingDialog(slot)"
                 [attr.aria-label]="formatSlotTime(slot) + ' ' + t(statusLabelKeys[slot.status])"
               >
                 <span class="slot-time">{{ formatSlotTime(slot) }}</span>

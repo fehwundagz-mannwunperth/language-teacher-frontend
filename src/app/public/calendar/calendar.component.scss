@@ -125,6 +125,15 @@
   text-align: left;
 }
 
+.slot.status-available {
+  cursor: pointer;
+}
+
+.slot.status-available:hover {
+  border-color: rgba(46, 125, 50, 0.5);
+  box-shadow: 0 0.5rem 1rem rgba(46, 125, 50, 0.1);
+}
+
 .slot:disabled {
   cursor: default;
 }

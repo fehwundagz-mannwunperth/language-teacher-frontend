@@ -2,22 +2,30 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { LanguageCode, TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
 import { BookingCalendarService } from '../../core/services/booking-calendar.service';
 import { BookingStatus } from '../../models/booking-status.type';
-import { BookingSlot } from '../../models/booking-slot.model';
+import { BookingConflictResponse, BookingSlot } from '../../models/booking-slot.model';
+import {
+  BookingDialogComponent,
+  BookingDialogResult,
+} from './booking-dialog/booking-dialog.component';
 
 @Component({
   selector: 'app-calendar',
-  imports: [AsyncPipe, MatButtonModule, MatCardModule, MatIconModule],
+  imports: [AsyncPipe, MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule],
   templateUrl: './calendar.component.html',
   styleUrl: './calendar.component.scss',
 })
 export class CalendarComponent {
   private readonly bookingCalendarService = inject(BookingCalendarService);
+  private readonly dialog = inject(MatDialog);
+  private readonly snackBar = inject(MatSnackBar);
   private readonly translationService = inject(TranslationService);
 
   protected selectedWeekStart = this.getMondayDateKey(new Date());
@@ -67,6 +75,26 @@ export class CalendarComponent {
     this.loadWeek(new Date());
   }
 
+  protected openBookingDialog(slot: BookingSlot): void {
+    if (slot.status !== 'AVAILABLE') {
+      return;
+    }
+
+    const dialogRef = this.dialog.open(BookingDialogComponent, {
+      data: { slotTime: this.formatSlotTime(slot) },
+      maxWidth: 'calc(100vw - 2rem)',
+      width: '28rem',
+    });
+
+    dialogRef.afterClosed().subscribe((result?: BookingDialogResult) => {
+      if (!result) {
+        return;
+      }
+
+      this.createBooking(slot, result);
+    });
+  }
+
   protected t(key: TranslationKey): string {
     return this.translationService.translate(key);
   }
@@ -74,6 +102,58 @@ export class CalendarComponent {
   private loadWeek(date: Date): void {
     this.selectedWeekStart = this.getMondayDateKey(date);
     this.calendar$ = this.bookingCalendarService.getWeeklyCalendar(this.selectedWeekStart);
+  }
+
+  private createBooking(slot: BookingSlot, result: BookingDialogResult): void {
+    this.bookingCalendarService
+      .createBooking({
+        start: slot.start,
+        end: slot.end,
+        customerName: result.customerName,
+        customerEmail: result.customerEmail,
+      })
+      .subscribe({
+        next: (booking) => {
+          slot.status = booking.status;
+          this.showSuccess('calendar.booking.success');
+        },
+        error: (error: unknown) => {
+          if (this.isConflictError(error)) {
+            this.showError('calendar.booking.conflict');
+            this.reloadSelectedWeek();
+            return;
+          }
+
+          this.showError('calendar.booking.unexpectedError');
+        },
+      });
+  }
+
+  private reloadSelectedWeek(): void {
+    this.calendar$ = this.bookingCalendarService.getWeeklyCalendar(this.selectedWeekStart);
+  }
+
+  private showSuccess(key: TranslationKey): void {
+    this.snackBar.open(this.t(key), this.t('calendar.snackbar.close'), {
+      duration: 4200,
+      panelClass: 'success-snackbar',
+    });
+  }
+
+  private showError(key: TranslationKey): void {
+    this.snackBar.open(this.t(key), this.t('calendar.snackbar.close'), {
+      duration: 5200,
+      panelClass: 'error-snackbar',
+    });
+  }
+
+  private isConflictError(error: unknown): error is BookingConflictResponse {
+    return (
+      typeof error === 'object' &&
+      error !== null &&
+      'code' in error &&
+      error.code === 'SLOT_NOT_AVAILABLE'
+    );
   }
 
   private formatTime(value: string): string {

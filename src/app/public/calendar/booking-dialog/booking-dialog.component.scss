@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--app-muted);
+  line-height: 1.6;
+}
+
+form {
+  display: grid;
+  gap: 0.85rem;
+  min-width: min(24rem, 72vw);
+}

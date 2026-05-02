@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 
 import {
   BackendBookingCalendarResponse,
   BackendBookingDay,
+  BackendBookingSlot,
+  BookingConflictResponse,
+  BookingCreateRequest,
   BookingDayKey,
   BookingCalendar,
   BookingSlot,
@@ -14,12 +17,42 @@ const BOOKABLE_END_HOUR = 18;
 const SLOT_MINUTES = 30;
 const WEEKDAYS = 5;
 const DAY_KEYS: BookingDayKey[] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+const CONFLICT_MOCK_STARTS = new Set(['2026-04-27T10:00:00', '2026-05-04T10:00:00']);
+const UNEXPECTED_ERROR_MOCK_STARTS = new Set(['2026-04-27T10:30:00', '2026-05-04T10:30:00']);
 
 @Injectable({ providedIn: 'root' })
 export class BookingCalendarService {
+  private readonly createdBookings: BackendBookingSlot[] = [];
+
   getWeeklyCalendar(weekStart: string): Observable<BookingCalendar> {
     // Future Spring Boot endpoint: GET /api/public/calendar/bookings?weekStart=YYYY-MM-DD
     return of(this.buildWeeklyCalendar(this.getMockBackendResponse(weekStart)));
+  }
+
+  createBooking(request: BookingCreateRequest): Observable<BackendBookingSlot> {
+    // Future Spring Boot endpoint: POST /api/public/calendar/bookings
+    if (CONFLICT_MOCK_STARTS.has(request.start)) {
+      return throwError(
+        () =>
+          ({
+            code: 'SLOT_NOT_AVAILABLE',
+            message: 'This time slot is no longer available.',
+          }) satisfies BookingConflictResponse,
+      );
+    }
+
+    if (UNEXPECTED_ERROR_MOCK_STARTS.has(request.start)) {
+      return throwError(() => new Error('Unexpected booking error'));
+    }
+
+    const pendingBooking: BackendBookingSlot = {
+      start: request.start,
+      end: request.end,
+      status: 'PENDING',
+    };
+
+    this.createdBookings.push(pendingBooking);
+    return of(pendingBooking);
   }
 
   private buildWeeklyCalendar(response: BackendBookingCalendarResponse): BookingCalendar {
@@ -142,10 +175,27 @@ export class BookingCalendarService {
       },
     };
 
-    return mockResponses[weekStart] ?? {
+    const response = mockResponses[weekStart] ?? {
       weekStart,
       weekEnd,
       days: emptyDays,
+    };
+
+    return this.applyCreatedBookings(response);
+  }
+
+  private applyCreatedBookings(
+    response: BackendBookingCalendarResponse,
+  ): BackendBookingCalendarResponse {
+    return {
+      ...response,
+      days: response.days.map((day) => ({
+        ...day,
+        slots: [
+          ...day.slots,
+          ...this.createdBookings.filter((booking) => booking.start.startsWith(`${day.date}T`)),
+        ],
+      })),
     };
   }
 

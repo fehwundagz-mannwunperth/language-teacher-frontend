@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{ t('calendar.bookingDialog.title') }}</h2>
+
+<mat-dialog-content>
+  <p>{{ t('calendar.bookingDialog.selectedSlot') }} {{ data.slotTime }}</p>
+
+  <form [formGroup]="bookingForm" id="booking-form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ t('calendar.bookingDialog.name') }}</mat-label>
+      <input matInput formControlName="customerName" />
+      @if (bookingForm.controls.customerName.hasError('required')) {
+        <mat-error>{{ t('calendar.bookingDialog.nameRequired') }}</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ t('calendar.bookingDialog.email') }}</mat-label>
+      <input matInput type="email" formControlName="customerEmail" />
+      @if (bookingForm.controls.customerEmail.hasError('required')) {
+        <mat-error>{{ t('calendar.bookingDialog.emailRequired') }}</mat-error>
+      } @else if (bookingForm.controls.customerEmail.hasError('email')) {
+        <mat-error>{{ t('calendar.bookingDialog.emailInvalid') }}</mat-error>
+      }
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button type="button" mat-dialog-close>{{ t('calendar.bookingDialog.cancel') }}</button>
+  <button mat-flat-button type="submit" form="booking-form" [disabled]="bookingForm.invalid">
+    {{ t('calendar.bookingDialog.submit') }}
+  </button>
+</mat-dialog-actions>

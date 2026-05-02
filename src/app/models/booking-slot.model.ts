@@ -38,3 +38,15 @@ export interface BookingCalendar {
   days: BookingCalendarDay[];
   timeLabels: string[];
 }
+
+export interface BookingCreateRequest {
+  start: string;
+  end: string;
+  customerName: string;
+  customerEmail: string;
+}
+
+export interface BookingConflictResponse {
+  code: 'SLOT_NOT_AVAILABLE';
+  message: string;
+}
