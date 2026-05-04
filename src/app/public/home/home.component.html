@@ -12,7 +12,7 @@
         </p>
         <div class="hero-actions">
           <a mat-flat-button routerLink="/contact">{{ hero.primaryButtonText }}</a>
-          <a mat-stroked-button routerLink="/lessons">{{ hero.secondaryButtonText }}</a>
+          <a mat-stroked-button routerLink="/lessons-services">{{ hero.secondaryButtonText }}</a>
         </div>
         <dl class="hero-stats" aria-label="Teaching highlights">
           <div>
@@ -71,15 +71,28 @@
             <p>{{ section.summary }}</p>
           </div>
 
-          <div class="card-grid">
-            @for (lesson of lessons$ | async; track lesson.id) {
+          <div class="card-grid lessons-carousel" [class.is-carousel]="hasLessonServiceCarousel()">
+            @for (lesson of visibleLessonServices(); track lesson.id) {
               <app-section-card
                 [title]="lesson.title"
-                [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
-                [description]="lesson.description"
+                [eyebrow]="lesson.label"
+                [description]="lesson.summary"
               />
             }
           </div>
+
+          @if (hasLessonServiceCarousel()) {
+            <div class="carousel-dots" aria-label="Lesson and service slides">
+              @for (lesson of lessonServices(); track lesson.id; let index = $index) {
+                <button
+                  type="button"
+                  [class.active-dot]="activeSlideIndex() === index"
+                  [attr.aria-label]="'Show lesson/service slide ' + (index + 1)"
+                  (click)="showSlide(index)"
+                ></button>
+              }
+            </div>
+          }
         </section>
       }
 

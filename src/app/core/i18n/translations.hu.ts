@@ -3,7 +3,7 @@ import { Translations } from './language.model';
 export const HU_TRANSLATIONS: Translations = {
   'nav.home': 'Főoldal',
   'nav.about': 'Rólam',
-  'nav.lessons': 'Órák',
+  'nav.lessons': '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok',
   'nav.prices': 'Árak',
   'nav.calendar': 'Foglalás',
   'nav.blog': 'Blog',
@@ -24,7 +24,7 @@ export const HU_TRANSLATIONS: Translations = {
   'home.hero.lead':
     'Barátságos, célorientált angolórák felnőtteknek és tinédzsereknek, akik szeretnének bátrabban beszélni, pontosabban használni a nyelvtant és valós helyzetekben fejlődni.',
   'home.hero.primaryCta': 'Próbaóra foglalása',
-  'home.hero.secondaryCta': 'Órák megtekintése',
+  'home.hero.secondaryCta': '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok megtekint\u00e9se',
   'home.hero.statExperience': 'év tapasztalat',
   'home.hero.statLevels': 'tanulói szintek',
   'home.hero.statPersonal': 'személyes órák',
@@ -59,8 +59,12 @@ export const HU_TRANSLATIONS: Translations = {
   'about.copy':
     'Az órák világos célokra, hasznos visszajelzésre és életszerű beszédgyakorlatokra épülnek.',
   'about.experience': 'év tanítási tapasztalat',
-  'lessons.eyebrow': 'Órák',
+  'lessons.eyebrow': '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok',
   'lessons.title': 'Válaszd ki a célodhoz illő formátumot',
+  'lessons.backToList': 'Vissza az \u00f3r\u00e1khoz \u00e9s szolg\u00e1ltat\u00e1sokhoz',
+  'lessons.notFoundTitle': 'Az \u00f3ra vagy szolg\u00e1ltat\u00e1s nem tal\u00e1lhat\u00f3',
+  'lessons.notFoundCopy':
+    'A kiv\u00e1lasztott \u00f3ra vagy szolg\u00e1ltat\u00e1s nem \u00e9rhet\u0151 el a mock tartalomban.',
   'prices.eyebrow': 'Árak',
   'prices.title': 'Egyszerű csomagok folyamatos fejlődéshez',
   'blog.eyebrow': 'Blog',
@@ -165,7 +169,8 @@ export const HU_TRANSLATIONS: Translations = {
   'homeContent.secondaryButton': 'M\u00e1sodlagos gomb sz\u00f6vege',
   'homeContent.labelRequired': 'A c\u00edmke megad\u00e1sa k\u00f6telez\u0151.',
   'homeContent.titleRequired': 'A c\u00edm megad\u00e1sa k\u00f6telez\u0151.',
-  'homeContent.lessonCardsNote': 'Az \u00f3rak\u00e1rty\u00e1k k\u00e9s\u0151bb k\u00fcl\u00f6n oldalon kezelhet\u0151k.',
+  'homeContent.lessonCardsNote':
+    'Az \u00f3ra- \u00e9s szolg\u00e1ltat\u00e1sk\u00e1rty\u00e1k csak az \u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok st\u00fadi\u00f3 oldalon kezelhet\u0151k.',
   'homeContent.testimonialCardsNote':
     'A visszajelz\u00e9sk\u00e1rty\u00e1k k\u00e9s\u0151bb k\u00fcl\u00f6n oldalon kezelhet\u0151k.',
   'homeContent.save': 'F\u0151oldal tartalom ment\u00e9se',
@@ -175,6 +180,38 @@ export const HU_TRANSLATIONS: Translations = {
   'homeContent.section.teacherIntro': 'Tan\u00e1ri bemutatkoz\u00e1s',
   'homeContent.section.lessonsServices': '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok',
   'homeContent.section.testimonials': 'Visszajelz\u00e9sek',
+  'lessonServicesAdmin.eyebrow': 'St\u00fadi\u00f3 kezel\u00e9se',
+  'lessonServicesAdmin.title': '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok',
+  'lessonServicesAdmin.copy':
+    'Hozz l\u00e9tre, szerkessz, rendezz \u00e9s t\u00f6r\u00f6lj nyilv\u00e1nos \u00f3ra- \u00e9s szolg\u00e1ltat\u00e1sk\u00e1rty\u00e1kat.',
+  'lessonServicesAdmin.createTitle': '\u00daj elem l\u00e9trehoz\u00e1sa',
+  'lessonServicesAdmin.editTitle': 'Elem szerkeszt\u00e9se',
+  'lessonServicesAdmin.itemLimit': 'Felhaszn\u00e1lt elemek:',
+  'lessonServicesAdmin.label': 'C\u00edmke',
+  'lessonServicesAdmin.itemTitle': 'C\u00edm',
+  'lessonServicesAdmin.summary': '\u00d6sszefoglal\u00f3',
+  'lessonServicesAdmin.content': 'Tartalom',
+  'lessonServicesAdmin.required': 'A mez\u0151 kit\u00f6lt\u00e9se k\u00f6telez\u0151.',
+  'lessonServicesAdmin.summaryTooLong':
+    'Az \u00f6sszefoglal\u00f3 legfeljebb 100 karakter lehet.',
+  'lessonServicesAdmin.create': 'Elem l\u00e9trehoz\u00e1sa',
+  'lessonServicesAdmin.update': 'Elem friss\u00edt\u00e9se',
+  'lessonServicesAdmin.cancel': '\u0170rlap t\u00f6rl\u00e9se',
+  'lessonServicesAdmin.edit': 'Szerkeszt\u00e9s',
+  'lessonServicesAdmin.delete': 'T\u00f6rl\u00e9s',
+  'lessonServicesAdmin.deleteConfirm':
+    'T\u00f6rl\u00f6d ezt az \u00f3ra/szolg\u00e1ltat\u00e1s elemet?',
+  'lessonServicesAdmin.orderTitle': 'Megjelen\u00edt\u00e9si sorrend',
+  'lessonServicesAdmin.orderHint':
+    'H\u00fazd az elemeket abba a sorrendbe, ahogy a nyilv\u00e1nos oldalon megjelenjenek.',
+  'lessonServicesAdmin.validationError': 'Jav\u00edtsd a kijel\u00f6lt mez\u0151ket.',
+  'lessonServicesAdmin.maxItemsError':
+    'Legfeljebb 6 \u00f3ra/szolg\u00e1ltat\u00e1s elem enged\u00e9lyezett.',
+  'lessonServicesAdmin.createSuccess': 'Az \u00f3ra/szolg\u00e1ltat\u00e1s elem l\u00e9trehozva.',
+  'lessonServicesAdmin.updateSuccess': 'Az \u00f3ra/szolg\u00e1ltat\u00e1s elem friss\u00edtve.',
+  'lessonServicesAdmin.deleteSuccess': 'Az \u00f3ra/szolg\u00e1ltat\u00e1s elem t\u00f6r\u00f6lve.',
+  'lessonServicesAdmin.orderSuccess': 'Az \u00f3ra/szolg\u00e1ltat\u00e1s sorrend mentve.',
+  'lessonServicesAdmin.saveError': 'V\u00e1ratlan mock ment\u00e9si hiba t\u00f6rt\u00e9nt.',
   'legal.terms.eyebrow': 'Jogi információk',
   'legal.terms.title': 'Általános szerződési feltételek',
   'legal.terms.placeholder': 'Az Általános szerződési feltételek tartalma később kerül ide.',

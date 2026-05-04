@@ -38,6 +38,13 @@ export const routes: Routes = [
             (m) => m.HomeContentComponent,
           ),
       },
+      {
+        path: 'lessons-services',
+        loadComponent: () =>
+          import('./admin/lesson-services/lesson-services-admin.component').then(
+            (m) => m.LessonServicesAdminComponent,
+          ),
+      },
     ],
   },
   {
@@ -86,8 +93,20 @@ export const routes: Routes = [
       },
       {
         path: 'lessons',
+        redirectTo: 'lessons-services',
+        pathMatch: 'full',
+      },
+      {
+        path: 'lessons-services',
         loadComponent: () =>
           import('./public/lessons/lessons.component').then((m) => m.LessonsComponent),
+      },
+      {
+        path: 'lessons-services/:id',
+        loadComponent: () =>
+          import('./public/lesson-service-detail/lesson-service-detail.component').then(
+            (m) => m.LessonServiceDetailComponent,
+          ),
       },
       {
         path: 'prices',

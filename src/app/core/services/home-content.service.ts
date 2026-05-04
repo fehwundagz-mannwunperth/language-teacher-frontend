@@ -27,7 +27,7 @@ const DEFAULT_SECTIONS_BY_LANGUAGE: Record<LanguageCode, EditableHomeSections> =
       summary:
         'Barátságos, célorientált angolórák felnőtteknek és tinédzsereknek, akik szeretnének bátrabban beszélni, pontosabban használni a nyelvtant és valós helyzetekben fejlődni.',
       primaryButtonText: 'Próbaóra foglalása',
-      secondaryButtonText: 'Órák megtekintése',
+      secondaryButtonText: '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok megtekint\u00e9se',
     },
     teacherIntro: {
       key: 'teacherIntro',
@@ -58,7 +58,7 @@ const DEFAULT_SECTIONS_BY_LANGUAGE: Record<LanguageCode, EditableHomeSections> =
       summary:
         'Practical, friendly English lessons for adults and teens who want clearer speaking, stronger grammar, and more confidence in real situations.',
       primaryButtonText: 'Book a trial lesson',
-      secondaryButtonText: 'View lessons',
+      secondaryButtonText: 'View lessons & services',
     },
     teacherIntro: {
       key: 'teacherIntro',
@@ -154,15 +154,26 @@ export class HomeContentService {
     try {
       const parsedState = JSON.parse(storedState) as Partial<EditableHomeContentState>;
 
+      const sectionsByLanguage = {
+        hu: {
+          ...DEFAULT_SECTIONS_BY_LANGUAGE.hu,
+          ...parsedState.sectionsByLanguage?.hu,
+        },
+        en: {
+          ...DEFAULT_SECTIONS_BY_LANGUAGE.en,
+          ...parsedState.sectionsByLanguage?.en,
+        },
+      };
+
       return {
         sectionsByLanguage: {
           hu: {
-            ...DEFAULT_SECTIONS_BY_LANGUAGE.hu,
-            ...parsedState.sectionsByLanguage?.hu,
+            ...sectionsByLanguage.hu,
+            hero: this.normalizeHeroButtons('hu', sectionsByLanguage.hu.hero),
           },
           en: {
-            ...DEFAULT_SECTIONS_BY_LANGUAGE.en,
-            ...parsedState.sectionsByLanguage?.en,
+            ...sectionsByLanguage.en,
+            hero: this.normalizeHeroButtons('en', sectionsByLanguage.en.hero),
           },
         },
         sectionOrder: this.normalizeSectionOrder(parsedState.sectionOrder ?? DEFAULT_SECTION_ORDER),
@@ -183,5 +194,26 @@ export class HomeContentService {
     );
 
     return ['hero', ...savedMovableSections, ...missingSections];
+  }
+
+  private normalizeHeroButtons(
+    language: LanguageCode,
+    hero: EditableHomeSections['hero'],
+  ): EditableHomeSections['hero'] {
+    const oldSecondaryButtonText =
+      language === 'hu' ? '\u00d3r\u00e1k megtekint\u00e9se' : 'View lessons';
+    const nextSecondaryButtonText =
+      language === 'hu'
+        ? '\u00d3r\u00e1k \u00e9s szolg\u00e1ltat\u00e1sok megtekint\u00e9se'
+        : 'View lessons & services';
+
+    if (hero.secondaryButtonText !== oldSecondaryButtonText) {
+      return hero;
+    }
+
+    return {
+      ...hero,
+      secondaryButtonText: nextSecondaryButtonText,
+    };
   }
 }

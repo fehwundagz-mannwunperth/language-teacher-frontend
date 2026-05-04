@@ -1,0 +1,121 @@
+<section class="lesson-services-admin-page">
+  <div class="studio-shell">
+    <header>
+      <div>
+        <p class="eyebrow">{{ t('lessonServicesAdmin.eyebrow') }}</p>
+        <h1>{{ t('lessonServicesAdmin.title') }}</h1>
+        <p>{{ t('lessonServicesAdmin.copy') }}</p>
+      </div>
+
+      <div class="studio-actions">
+        <a mat-stroked-button routerLink="/studio/overview">
+          {{ t('studioOverview.title') }}
+        </a>
+        <a mat-stroked-button routerLink="/studio/home-content">
+          {{ t('nav.homeContent') }}
+        </a>
+      </div>
+    </header>
+
+    <div class="admin-grid">
+      <mat-card appearance="outlined" class="editor-card" [formGroup]="form">
+        <h2>
+          @if (isEditing()) {
+            {{ t('lessonServicesAdmin.editTitle') }}
+          } @else {
+            {{ t('lessonServicesAdmin.createTitle') }}
+          }
+        </h2>
+
+        <p class="limit-copy">
+          {{ t('lessonServicesAdmin.itemLimit') }} {{ items().length }}/{{ maxItems }}
+        </p>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('lessonServicesAdmin.label') }}</mat-label>
+          <input matInput formControlName="label" />
+          @if (form.controls.label.hasError('required')) {
+            <mat-error>{{ t('lessonServicesAdmin.required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('lessonServicesAdmin.itemTitle') }}</mat-label>
+          <input matInput formControlName="title" />
+          @if (form.controls.title.hasError('required')) {
+            <mat-error>{{ t('lessonServicesAdmin.required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('lessonServicesAdmin.summary') }}</mat-label>
+          <textarea matInput rows="3" formControlName="summary"></textarea>
+          <mat-hint align="end">
+            {{ form.controls.summary.value.length }}/{{ summaryMaxLength }}
+          </mat-hint>
+          @if (form.controls.summary.hasError('required')) {
+            <mat-error>{{ t('lessonServicesAdmin.required') }}</mat-error>
+          }
+          @if (form.controls.summary.hasError('maxlength')) {
+            <mat-error>{{ t('lessonServicesAdmin.summaryTooLong') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('lessonServicesAdmin.content') }}</mat-label>
+          <textarea matInput rows="8" formControlName="content"></textarea>
+          @if (form.controls.content.hasError('required')) {
+            <mat-error>{{ t('lessonServicesAdmin.required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-flat-button type="button" (click)="save()">
+            @if (isEditing()) {
+              {{ t('lessonServicesAdmin.update') }}
+            } @else {
+              {{ t('lessonServicesAdmin.create') }}
+            }
+          </button>
+          <button mat-stroked-button type="button" (click)="resetForm()">
+            {{ t('lessonServicesAdmin.cancel') }}
+          </button>
+        </div>
+
+        @if (!canCreateMore() && !isEditing()) {
+          <p class="max-note">{{ t('lessonServicesAdmin.maxItemsError') }}</p>
+        }
+      </mat-card>
+
+      <mat-card appearance="outlined" class="list-card">
+        <h2>{{ t('lessonServicesAdmin.orderTitle') }}</h2>
+        <p>{{ t('lessonServicesAdmin.orderHint') }}</p>
+
+        <div cdkDropList class="item-list" (cdkDropListDropped)="dropItem($event)">
+          @for (item of items(); track item.id) {
+            <div cdkDrag class="item-row">
+              <button cdkDragHandle mat-stroked-button type="button">
+                {{ t('homeContent.drag') }}
+              </button>
+
+              <div class="item-copy">
+                <span>{{ item.label }}</span>
+                <strong>{{ item.title }}</strong>
+                <p>{{ item.summary }}</p>
+              </div>
+
+              <div class="row-actions">
+                <button mat-stroked-button type="button" (click)="editItem(item)">
+                  {{ t('lessonServicesAdmin.edit') }}
+                </button>
+                <button mat-stroked-button type="button" (click)="deleteItem(item)">
+                  {{ t('lessonServicesAdmin.delete') }}
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</section>

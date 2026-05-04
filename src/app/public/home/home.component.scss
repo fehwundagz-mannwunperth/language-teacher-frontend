@@ -136,6 +136,41 @@ h1 {
   gap: 1rem;
 }
 
+.lessons-carousel app-section-card {
+  animation: carousel-fade 220ms ease;
+}
+
+@keyframes carousel-fade {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.carousel-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+}
+
+.carousel-dots button {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 1px solid rgba(107, 78, 113, 0.38);
+  border-radius: 999px;
+  background: var(--app-surface);
+  cursor: pointer;
+}
+
+.carousel-dots .active-dot {
+  background: var(--app-primary);
+}
+
 .intro-section {
   background: var(--app-surface);
 }

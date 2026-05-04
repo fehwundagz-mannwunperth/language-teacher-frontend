@@ -1,0 +1,19 @@
+<section class="page-shell page-section">
+  @if (lessonService(); as lesson) {
+    <a mat-stroked-button routerLink="/lessons-services">{{ t('lessons.backToList') }}</a>
+
+    <mat-card appearance="outlined" class="detail-card">
+      <p class="eyebrow">{{ lesson.label }}</p>
+      <h1>{{ lesson.title }}</h1>
+      <p class="summary">{{ lesson.summary }}</p>
+      <div class="content">{{ lesson.content }}</div>
+    </mat-card>
+  } @else {
+    <mat-card appearance="outlined" class="detail-card">
+      <p class="eyebrow">{{ t('lessons.eyebrow') }}</p>
+      <h1>{{ t('lessons.notFoundTitle') }}</h1>
+      <p class="summary">{{ t('lessons.notFoundCopy') }}</p>
+      <a mat-flat-button routerLink="/lessons-services">{{ t('lessons.backToList') }}</a>
+    </mat-card>
+  }
+</section>

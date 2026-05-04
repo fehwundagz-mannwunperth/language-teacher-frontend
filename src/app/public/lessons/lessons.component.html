@@ -3,12 +3,14 @@
   <h1>{{ t('lessons.title') }}</h1>
 
   <div class="card-grid">
-    @for (lesson of lessons$ | async; track lesson.id) {
-      <app-section-card
-        [title]="lesson.title"
-        [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
-        [description]="lesson.description"
-      />
+    @for (lesson of lessonServices(); track lesson.id) {
+      <a class="lesson-card-link" [routerLink]="['/lessons-services', lesson.id]">
+        <app-section-card
+          [title]="lesson.title"
+          [eyebrow]="lesson.label"
+          [description]="lesson.summary"
+        />
+      </a>
     }
   </div>
 </section>

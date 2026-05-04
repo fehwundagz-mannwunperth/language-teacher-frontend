@@ -1,0 +1,36 @@
+.detail-card {
+  max-width: 52rem;
+  margin-top: 1.5rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border-color: var(--app-border);
+  background: rgba(255, 253, 248, 0.9);
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--app-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: var(--app-ink);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+.summary {
+  margin: 1rem 0 0;
+  color: var(--app-muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.content {
+  margin-top: 1.5rem;
+  color: var(--app-ink);
+  font-size: 1rem;
+  line-height: 1.8;
+  white-space: pre-line;
+}

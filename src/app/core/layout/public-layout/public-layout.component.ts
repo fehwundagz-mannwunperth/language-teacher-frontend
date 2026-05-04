@@ -37,7 +37,7 @@ export class PublicLayoutComponent {
   protected readonly navItems: { labelKey: TranslationKey; path: string }[] = [
     { labelKey: 'nav.home', path: '/' },
     { labelKey: 'nav.about', path: '/about' },
-    { labelKey: 'nav.lessons', path: '/lessons' },
+    { labelKey: 'nav.lessons', path: '/lessons-services' },
     { labelKey: 'nav.prices', path: '/prices' },
     { labelKey: 'nav.calendar', path: '/calendar' },
     { labelKey: 'nav.blog', path: '/blog' },
