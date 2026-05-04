@@ -1,4 +1,4 @@
-import { AsyncPipe, CurrencyPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -9,7 +9,7 @@ import { PricingService } from '../../core/services/pricing.service';
 
 @Component({
   selector: 'app-prices',
-  imports: [AsyncPipe, CurrencyPipe, MatCardModule, MatListModule],
+  imports: [AsyncPipe, MatCardModule, MatListModule],
   templateUrl: './prices.component.html',
   styleUrl: './prices.component.scss',
 })
@@ -21,5 +21,24 @@ export class PricesComponent {
 
   protected t(key: TranslationKey): string {
     return this.translationService.translate(key);
+  }
+
+  protected formatPrice(price: number, currency: string): string {
+    if (currency === 'HUF') {
+      const amount = new Intl.NumberFormat('hu-HU', {
+        maximumFractionDigits: 0,
+        minimumFractionDigits: 0,
+        useGrouping: true,
+      }).format(price);
+
+      return `${amount} Ft`;
+    }
+
+    return new Intl.NumberFormat('hu-HU', {
+      currency,
+      maximumFractionDigits: 0,
+      minimumFractionDigits: 0,
+      style: 'currency',
+    }).format(price);
   }
 }

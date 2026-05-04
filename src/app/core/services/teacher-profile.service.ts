@@ -8,11 +8,11 @@ export class TeacherProfileService {
   getProfile(): Observable<TeacherProfile> {
     // Future Spring Boot endpoint: GET /api/public/profile
     return of({
-      name: 'Anna Kovacs',
+      name: 'Kun Brigitta',
       headline: 'Private English lessons for confident, practical communication',
       bio: 'I help adults and teens improve speaking, grammar, exam preparation, and workplace English with calm, structured lessons.',
       languages: ['English', 'Hungarian'],
-      email: 'hello@annalanguages.example',
+      email: 'hello@brigittalanguages.example',
       location: 'Budapest and online',
       yearsExperience: 9,
     });

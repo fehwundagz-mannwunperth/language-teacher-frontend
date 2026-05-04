@@ -27,7 +27,7 @@ export const HU_TRANSLATIONS: Translations = {
   'home.hero.availableLocation': 'Online és Budapesten',
   'home.hero.availableTrial': 'Próbaórák elérhetők',
   'home.intro.eyebrow': 'Ismerd meg a tanárt',
-  'home.intro.title': 'Anna Kovacs',
+  'home.intro.title': 'Kun Brigitta',
   'home.intro.copy':
     'Az órák célalapúak és könnyen követhetők: kijelölünk egy fókuszt, valós példákkal gyakorlunk, majd világos következő lépésekkel zárunk az önálló tanuláshoz.',
   'home.lessons.eyebrow': 'Órák és szolgáltatások',
@@ -41,7 +41,7 @@ export const HU_TRANSLATIONS: Translations = {
   'home.testimonial1.name': 'Kata',
   'home.testimonial1.context': 'Business English tanuló',
   'home.testimonial2.quote':
-    'Anna érthetően magyarázta a nyelvtant, és a vizsgacéljaimhoz illő beszédfeladatokat adott.',
+    'Brigitta érthetően magyarázta a nyelvtant, és a vizsgacéljaimhoz illő beszédfeladatokat adott.',
   'home.testimonial2.name': 'Máté',
   'home.testimonial2.context': 'Vizsgafelkészítő tanuló',
   'home.testimonial3.quote':
@@ -50,7 +50,7 @@ export const HU_TRANSLATIONS: Translations = {
   'home.testimonial3.context': 'Társalgási angol tanuló',
   'home.cta.eyebrow': 'Kezdd egyszerűen',
   'home.cta.title': 'Foglalj próbaórát, és kapj reális tanulási tervet.',
-  'home.cta.button': 'Kapcsolatfelvétel Annával',
+  'home.cta.button': 'Kapcsolatfelvétel Brigivel',
   'about.eyebrow': 'Rólam',
   'about.copy':
     'Az órák világos célokra, hasznos visszajelzésre és életszerű beszédgyakorlatokra épülnek.',

@@ -10,27 +10,27 @@ export class PricingService {
     return of([
       {
         id: 1,
-        title: 'Single Lesson',
+        title: 'Egy óra',
         price: 9000,
         currency: 'HUF',
-        description: 'A flexible one-off lesson for a specific topic or trial session.',
-        features: ['60 minutes', 'Online or in person', 'Personal feedback'],
+        description: 'Rugalmas, egyszeri óra egy adott témához vagy próbafoglalkozáshoz.',
+        features: ['60 perc', 'Online vagy személyesen', 'Személyes visszajelzés'],
       },
       {
         id: 2,
-        title: 'Monthly Pack',
+        title: 'Havi csomag',
         price: 34000,
         currency: 'HUF',
-        description: 'Four lessons with a simple learning plan and weekly practice tasks.',
-        features: ['4 x 60 minutes', 'Progress plan', 'Homework review'],
+        description: 'Négy lecke egyszerű tanulási tervvel és heti gyakorlófeladatokkal.',
+        features: ['4 x 60 perc', 'Haladási terv', 'Házi feladat áttekintése'],
       },
       {
         id: 3,
-        title: 'Intensive Pack',
+        title: 'Intenzív csomag',
         price: 64000,
         currency: 'HUF',
-        description: 'Eight lessons for exam preparation or fast speaking improvement.',
-        features: ['8 x 60 minutes', 'Priority scheduling', 'Extra materials'],
+        description: 'Nyolc lecke a vizsgára való felkészüléshez vagy a gyors beszédfejlesztéshez.',
+        features: ['8 x 60 perc', 'Elsőbbségi ütemezés', 'Extra anyagok'],
       },
     ]);
   }

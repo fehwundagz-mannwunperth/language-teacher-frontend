@@ -6,7 +6,7 @@
     @for (pricePackage of packages$ | async; track pricePackage.id) {
       <mat-card appearance="outlined">
         <h2>{{ pricePackage.title }}</h2>
-        <strong>{{ pricePackage.price | currency: pricePackage.currency : 'symbol-narrow' : '1.0-0' }}</strong>
+        <strong>{{ formatPrice(pricePackage.price, pricePackage.currency) }}</strong>
         <p>{{ pricePackage.description }}</p>
         <mat-list>
           @for (feature of pricePackage.features; track feature) {

@@ -27,7 +27,7 @@ export const EN_TRANSLATIONS: Translations = {
   'home.hero.availableLocation': 'Online and Budapest',
   'home.hero.availableTrial': 'Trial lessons available',
   'home.intro.eyebrow': 'Meet your teacher',
-  'home.intro.title': 'Anna Kovacs',
+  'home.intro.title': 'Brigitta Kun',
   'home.intro.copy':
     'Lessons are goal-based and easy to follow: we agree on a focus, practise with realistic examples, and finish with clear next steps for your independent study.',
   'home.lessons.eyebrow': 'Lessons and services',
@@ -41,7 +41,7 @@ export const EN_TRANSLATIONS: Translations = {
   'home.testimonial1.name': 'Kata',
   'home.testimonial1.context': 'Business English student',
   'home.testimonial2.quote':
-    'Anna explained grammar clearly and gave me speaking tasks that matched my exam goals.',
+    'Brigitta explained grammar clearly and gave me speaking tasks that matched my exam goals.',
   'home.testimonial2.name': 'Mate',
   'home.testimonial2.context': 'Exam preparation student',
   'home.testimonial3.quote':
@@ -50,7 +50,7 @@ export const EN_TRANSLATIONS: Translations = {
   'home.testimonial3.context': 'Conversation student',
   'home.cta.eyebrow': 'Start simply',
   'home.cta.title': 'Book a trial lesson and get a realistic learning plan.',
-  'home.cta.button': 'Contact Anna',
+  'home.cta.button': 'Contact Brigitta',
   'about.eyebrow': 'About',
   'about.copy':
     'Lessons are built around clear goals, useful feedback, and realistic speaking practice.',
