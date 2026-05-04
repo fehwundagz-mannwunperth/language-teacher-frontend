@@ -11,7 +11,7 @@ h1 {
 
 mat-card {
   padding: 1.4rem;
-  background: #ffffff;
+  background: var(--app-surface);
 }
 
 p {
@@ -20,7 +20,7 @@ p {
 }
 
 .eyebrow {
-  color: var(--app-accent);
+  color: var(--app-primary);
   font-weight: 700;
   text-transform: uppercase;
 }

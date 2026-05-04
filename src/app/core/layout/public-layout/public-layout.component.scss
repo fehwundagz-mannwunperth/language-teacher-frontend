@@ -4,8 +4,8 @@
   z-index: 10;
   justify-content: space-between;
   gap: 1rem;
-  border-bottom: 1px solid rgba(90, 106, 119, 0.12);
-  background: rgba(253, 250, 245, 0.92);
+  border-bottom: 1px solid var(--app-border);
+  background: rgba(255, 253, 248, 0.92);
   backdrop-filter: blur(16px);
 }
 
@@ -25,8 +25,8 @@
   height: 2rem;
   place-items: center;
   border-radius: 50%;
-  background: var(--app-accent);
-  color: white;
+  background: var(--app-primary);
+  color: var(--app-surface);
 }
 
 .desktop-nav {
@@ -49,7 +49,7 @@
 }
 
 .active-link {
-  color: var(--app-accent);
+  color: var(--app-primary);
 }
 
 .mobile-menu-button {
@@ -61,8 +61,8 @@ main {
 }
 
 .site-footer {
-  border-top: 1px solid rgba(90, 106, 119, 0.12);
-  background: #ffffff;
+  border-top: 1px solid var(--app-border);
+  background: var(--app-surface);
 }
 
 .footer-inner {
@@ -92,7 +92,7 @@ main {
 }
 
 .site-footer nav a:hover {
-  color: var(--app-accent);
+  color: var(--app-primary);
 }
 
 .footer-cta {
@@ -106,14 +106,14 @@ main {
 }
 
 .footer-cta a {
-  color: var(--app-accent);
+  color: var(--app-primary);
   font-weight: 700;
   text-decoration: none;
   transition: color 160ms ease;
 }
 
 .footer-cta a:hover {
-  color: var(--app-ink);
+  color: var(--app-accent);
 }
 
 .footer-provider {

@@ -1,8 +1,8 @@
 .section-card {
   height: 100%;
   padding: 1.25rem;
-  border-color: rgba(90, 106, 119, 0.18);
-  background: rgba(255, 255, 255, 0.82);
+  border-color: var(--app-border);
+  background: rgba(255, 253, 248, 0.88);
   transition:
     border-color 180ms ease,
     transform 180ms ease,
@@ -10,13 +10,13 @@
 }
 
 .section-card:hover {
-  border-color: rgba(83, 127, 117, 0.4);
-  box-shadow: 0 1rem 2rem rgba(37, 49, 59, 0.08);
+  border-color: rgba(107, 78, 113, 0.38);
+  box-shadow: 0 1rem 2rem var(--app-shadow);
   transform: translateY(-0.15rem);
 }
 
 .eyebrow {
-  color: var(--app-accent);
+  color: var(--app-primary);
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;

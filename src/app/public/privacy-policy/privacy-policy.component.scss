@@ -18,7 +18,7 @@ mat-card {
   grid-template-columns: auto minmax(0, 1fr);
   gap: 1rem;
   padding: 1.5rem;
-  background: #ffffff;
+  background: var(--app-surface);
 }
 
 span {
@@ -27,8 +27,8 @@ span {
   height: 2.25rem;
   place-items: center;
   border-radius: 50%;
-  background: var(--app-soft-blue);
-  color: var(--app-accent);
+  background: var(--app-soft);
+  color: var(--app-primary);
   font-weight: 700;
 }
 
@@ -45,7 +45,7 @@ p {
 }
 
 .eyebrow {
-  color: var(--app-accent);
+  color: var(--app-primary);
   font-weight: 700;
   text-transform: uppercase;
 }

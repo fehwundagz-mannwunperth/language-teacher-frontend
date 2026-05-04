@@ -7,23 +7,52 @@
 @use '@angular/material' as mat;
 
 :root {
-  --app-ink: #25313b;
-  --app-muted: #667580;
-  --app-accent: #537f75;
-  --app-warm: #f7eee3;
-  --app-soft-blue: #e8f1f4;
-  --app-surface: #fdfaf5;
+  --app-primary: #6b4e71;
+  --app-primary-dark: #2d2433;
+  --app-accent: #d9a441;
+  --app-background: #f5ebdd;
+  --app-surface: #fffdf8;
+  --app-ink: #2d2433;
+  --app-muted: #6f6475;
+  --app-soft: #efe1cf;
+  --app-border: rgba(107, 78, 113, 0.16);
+  --app-shadow: rgba(45, 36, 51, 0.1);
 }
 
 html {
   height: 100%;
   @include mat.theme((
     color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
+      primary: mat.$violet-palette,
+      tertiary: mat.$yellow-palette,
     ),
     typography: Roboto,
     density: 0,
+  ));
+
+  @include mat.theme-overrides((
+    primary: #6b4e71,
+    on-primary: #fffdf8,
+    primary-container: #ead9ec,
+    on-primary-container: #2d2433,
+    secondary: #d9a441,
+    on-secondary: #2d2433,
+    secondary-container: #f3dfab,
+    on-secondary-container: #2d2433,
+    tertiary: #d9a441,
+    on-tertiary: #2d2433,
+    tertiary-container: #f3dfab,
+    on-tertiary-container: #2d2433,
+    surface: #fffdf8,
+    surface-container-lowest: #fffdf8,
+    surface-container-low: #fbf3e8,
+    surface-container: #f5ebdd,
+    surface-container-high: #efe1cf,
+    background: #f5ebdd,
+    on-surface: #2d2433,
+    on-surface-variant: #6f6475,
+    outline: #9b879f,
+    outline-variant: #d8c6d6,
   ));
 }
 
@@ -36,7 +65,7 @@ body {
   // Set a default background, font and text colors for the application using
   // Angular Material's system-level CSS variables. Learn more about these
   // variables at https://material.angular.dev/guide/system-variables
-  background-color: var(--app-surface);
+  background-color: var(--app-background);
   color: var(--app-ink);
   font: var(--mat-sys-body-medium);
 
