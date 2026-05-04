@@ -1,6 +1,66 @@
 import { Routes } from '@angular/router';
 
+import { adminAuthChildGuard } from './core/guards/admin-auth.guard';
+
 export const routes: Routes = [
+  {
+    path: 'studio-login',
+    loadComponent: () =>
+      import('./public/studio-login/studio-login.component').then((m) => m.StudioLoginComponent),
+  },
+  {
+    path: 'studio',
+    canActivateChild: [adminAuthChildGuard],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'overview',
+      },
+      {
+        path: 'overview',
+        loadComponent: () =>
+          import('./admin/studio-overview/studio-overview.component').then(
+            (m) => m.StudioOverviewComponent,
+          ),
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./admin/studio-settings/studio-settings.component').then(
+            (m) => m.StudioSettingsComponent,
+          ),
+      },
+    ],
+  },
+  {
+    path: 'admin',
+    canActivateChild: [adminAuthChildGuard],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard',
+      },
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./admin/dashboard/dashboard.component').then((m) => m.DashboardComponent),
+      },
+      {
+        path: 'blog-editor',
+        loadComponent: () =>
+          import('./admin/blog-editor/blog-editor.component').then((m) => m.BlogEditorComponent),
+      },
+      {
+        path: 'content-editor',
+        loadComponent: () =>
+          import('./admin/content-editor/content-editor.component').then(
+            (m) => m.ContentEditorComponent,
+          ),
+      },
+    ],
+  },
   {
     path: '',
     loadComponent: () =>
@@ -10,6 +70,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         loadComponent: () => import('./public/home/home.component').then((m) => m.HomeComponent),
       },
       {
@@ -52,33 +113,6 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./public/privacy-policy/privacy-policy.component').then(
             (m) => m.PrivacyPolicyComponent,
-          ),
-      },
-    ],
-  },
-  {
-    path: 'admin',
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'dashboard',
-      },
-      {
-        path: 'dashboard',
-        loadComponent: () =>
-          import('./admin/dashboard/dashboard.component').then((m) => m.DashboardComponent),
-      },
-      {
-        path: 'blog-editor',
-        loadComponent: () =>
-          import('./admin/blog-editor/blog-editor.component').then((m) => m.BlogEditorComponent),
-      },
-      {
-        path: 'content-editor',
-        loadComponent: () =>
-          import('./admin/content-editor/content-editor.component').then(
-            (m) => m.ContentEditorComponent,
           ),
       },
     ],

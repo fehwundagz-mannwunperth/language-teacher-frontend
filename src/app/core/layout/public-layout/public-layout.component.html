@@ -15,6 +15,12 @@
         {{ t(item.labelKey) }}
       </a>
     }
+    @if (isAdminLoggedIn()) {
+      <a mat-button routerLink="/studio/overview" routerLinkActive="active-link">
+        {{ t('nav.studio') }}
+      </a>
+      <button mat-button type="button" (click)="logout()">{{ t('nav.logout') }}</button>
+    }
   </nav>
 
   <button
@@ -41,6 +47,10 @@
   <mat-menu #mobileMenu="matMenu">
     @for (item of navItems; track item.path) {
       <a mat-menu-item [routerLink]="item.path">{{ t(item.labelKey) }}</a>
+    }
+    @if (isAdminLoggedIn()) {
+      <a mat-menu-item routerLink="/studio/overview">{{ t('nav.studio') }}</a>
+      <button mat-menu-item type="button" (click)="logout()">{{ t('nav.logout') }}</button>
     }
   </mat-menu>
 </mat-toolbar>

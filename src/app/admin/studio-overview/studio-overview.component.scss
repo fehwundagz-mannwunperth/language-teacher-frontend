@@ -1,0 +1,73 @@
+.studio-overview-page {
+  min-height: 100vh;
+  background: var(--app-background);
+}
+
+.studio-shell {
+  width: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.studio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  color: var(--app-ink);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  margin-bottom: 0.7rem;
+  color: var(--app-ink);
+  font-size: 1.15rem;
+}
+
+p {
+  color: var(--app-muted);
+  line-height: 1.6;
+}
+
+.eyebrow {
+  margin-bottom: 0.65rem;
+  color: var(--app-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.studio-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+mat-card {
+  padding: 1.3rem;
+  border-color: var(--app-border);
+  background: var(--app-surface);
+}
+
+@media (min-width: 760px) {
+  .studio-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

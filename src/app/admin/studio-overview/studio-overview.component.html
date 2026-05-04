@@ -1,0 +1,36 @@
+<section class="studio-overview-page">
+  <div class="studio-shell">
+    <header>
+      <div>
+        <p class="eyebrow">{{ t('studioOverview.eyebrow') }}</p>
+        <h1>{{ t('studioOverview.title') }}</h1>
+      </div>
+
+      <div class="studio-actions">
+        <a mat-stroked-button routerLink="/studio/settings">
+          {{ t('nav.settings') }}
+        </a>
+        <button mat-stroked-button type="button" (click)="logout()">
+          {{ t('nav.logout') }}
+        </button>
+      </div>
+    </header>
+
+    <div class="studio-grid">
+      <mat-card appearance="outlined">
+        <h2>{{ t('studioOverview.bookingsTitle') }}</h2>
+        <p>{{ t('studioOverview.bookingsCopy') }}</p>
+      </mat-card>
+
+      <mat-card appearance="outlined">
+        <h2>{{ t('studioOverview.contentTitle') }}</h2>
+        <p>{{ t('studioOverview.contentCopy') }}</p>
+      </mat-card>
+
+      <mat-card appearance="outlined">
+        <h2>{{ t('studioOverview.blogTitle') }}</h2>
+        <p>{{ t('studioOverview.blogCopy') }}</p>
+      </mat-card>
+    </div>
+  </div>
+</section>
