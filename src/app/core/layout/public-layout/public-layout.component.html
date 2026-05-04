@@ -19,6 +19,9 @@
       <a mat-button routerLink="/studio/overview" routerLinkActive="active-link">
         {{ t('nav.studio') }}
       </a>
+      <a mat-button routerLink="/studio/home-content" routerLinkActive="active-link">
+        {{ t('nav.homeContent') }}
+      </a>
       <button mat-button type="button" (click)="logout()">{{ t('nav.logout') }}</button>
     }
   </nav>
@@ -50,6 +53,7 @@
     }
     @if (isAdminLoggedIn()) {
       <a mat-menu-item routerLink="/studio/overview">{{ t('nav.studio') }}</a>
+      <a mat-menu-item routerLink="/studio/home-content">{{ t('nav.homeContent') }}</a>
       <button mat-menu-item type="button" (click)="logout()">{{ t('nav.logout') }}</button>
     }
   </mat-menu>

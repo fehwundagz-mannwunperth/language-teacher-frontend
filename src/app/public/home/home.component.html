@@ -1,15 +1,18 @@
 @if (profile$ | async; as profile) {
+  @let content = homeContent();
+  @let hero = content.sections.hero;
+
   <section class="hero">
     <div class="hero-inner page-shell">
       <div class="hero-copy">
-        <p class="eyebrow">{{ t('home.hero.eyebrow') }}</p>
-        <h1>{{ t('home.hero.title') }}</h1>
+        <p class="eyebrow">{{ hero.label }}</p>
+        <h1>{{ hero.title }}</h1>
         <p class="lead">
-          {{ t('home.hero.lead') }}
+          {{ hero.summary }}
         </p>
         <div class="hero-actions">
-          <a mat-flat-button routerLink="/contact">{{ t('home.hero.primaryCta') }}</a>
-          <a mat-stroked-button routerLink="/lessons">{{ t('home.hero.secondaryCta') }}</a>
+          <a mat-flat-button routerLink="/contact">{{ hero.primaryButtonText }}</a>
+          <a mat-stroked-button routerLink="/lessons">{{ hero.secondaryButtonText }}</a>
         </div>
         <dl class="hero-stats" aria-label="Teaching highlights">
           <div>
@@ -29,7 +32,7 @@
 
       <div class="hero-visual">
         <img
-          src="/images/kun_brigitta_teacher.jpg"
+          [src]="content.heroImageUrl"
           width="900"
           height="900"
           alt="Private English teacher in a calm teaching studio"
@@ -42,58 +45,70 @@
     </div>
   </section>
 
-  <section class="intro-section">
-    <div class="page-shell intro-grid">
-      <div>
-        <p class="eyebrow">{{ t('home.intro.eyebrow') }}</p>
-        <h2>{{ t('home.intro.title') }}</h2>
-      </div>
-      <div class="intro-copy">
-        <p>{{ profile.bio }}</p>
-        <p>{{ t('home.intro.copy') }}</p>
-      </div>
-    </div>
-  </section>
-}
+  @for (sectionKey of movableSectionOrder(); track sectionKey) {
+    @let section = content.sections[sectionKey];
 
-<section class="page-shell section lessons-section">
-  <div class="section-heading">
-    <p class="eyebrow">{{ t('home.lessons.eyebrow') }}</p>
-    <h2>{{ t('home.lessons.title') }}</h2>
-    <p>
-      {{ t('home.lessons.copy') }}
-    </p>
-  </div>
-
-  <div class="card-grid">
-    @for (lesson of lessons$ | async; track lesson.id) {
-      <app-section-card
-        [title]="lesson.title"
-        [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
-        [description]="lesson.description"
-      />
-    }
-  </div>
-</section>
-
-<section class="testimonials-section">
-  <div class="page-shell">
-    <div class="section-heading">
-      <p class="eyebrow">{{ t('home.testimonials.eyebrow') }}</p>
-      <h2>{{ t('home.testimonials.title') }}</h2>
-    </div>
-
-    <div class="testimonial-grid">
-      @for (testimonial of testimonials; track testimonial.nameKey) {
-        <mat-card appearance="outlined">
-          <p class="quote">"{{ t(testimonial.quoteKey) }}"</p>
-          <strong>{{ t(testimonial.nameKey) }}</strong>
-          <span>{{ t(testimonial.contextKey) }}</span>
-        </mat-card>
+    @switch (sectionKey) {
+      @case ('teacherIntro') {
+        <section class="intro-section">
+          <div class="page-shell intro-grid">
+            <div>
+              <p class="eyebrow">{{ section.label }}</p>
+              <h2>{{ section.title }}</h2>
+            </div>
+            <div class="intro-copy">
+              <p>{{ section.summary }}</p>
+            </div>
+          </div>
+        </section>
       }
-    </div>
-  </div>
-</section>
+
+      @case ('lessonsServices') {
+        <section class="page-shell section lessons-section">
+          <div class="section-heading">
+            <p class="eyebrow">{{ section.label }}</p>
+            <h2>{{ section.title }}</h2>
+            <p>{{ section.summary }}</p>
+          </div>
+
+          <div class="card-grid">
+            @for (lesson of lessons$ | async; track lesson.id) {
+              <app-section-card
+                [title]="lesson.title"
+                [eyebrow]="lesson.level + ' / ' + lesson.durationMinutes + ' min'"
+                [description]="lesson.description"
+              />
+            }
+          </div>
+        </section>
+      }
+
+      @case ('testimonials') {
+        <section class="testimonials-section">
+          <div class="page-shell">
+            <div class="section-heading">
+              <p class="eyebrow">{{ section.label }}</p>
+              <h2>{{ section.title }}</h2>
+              @if (section.summary) {
+                <p>{{ section.summary }}</p>
+              }
+            </div>
+
+            <div class="testimonial-grid">
+              @for (testimonial of testimonials; track testimonial.nameKey) {
+                <mat-card appearance="outlined">
+                  <p class="quote">"{{ t(testimonial.quoteKey) }}"</p>
+                  <strong>{{ t(testimonial.nameKey) }}</strong>
+                  <span>{{ t(testimonial.contextKey) }}</span>
+                </mat-card>
+              }
+            </div>
+          </div>
+        </section>
+      }
+    }
+  }
+}
 
 <section class="page-shell cta-section">
   <div>

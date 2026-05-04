@@ -31,6 +31,13 @@ export const routes: Routes = [
             (m) => m.StudioSettingsComponent,
           ),
       },
+      {
+        path: 'home-content',
+        loadComponent: () =>
+          import('./admin/home-content/home-content.component').then(
+            (m) => m.HomeContentComponent,
+          ),
+      },
     ],
   },
   {

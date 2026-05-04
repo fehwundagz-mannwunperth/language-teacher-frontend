@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
+import { HomeSectionKey } from '../../models/editable-home-content.model';
+import { HomeContentService } from '../../core/services/home-content.service';
 import { LessonService } from '../../core/services/lesson.service';
 import { TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
@@ -18,9 +20,11 @@ import { SectionCardComponent } from '../../shared/components/section-card/secti
 })
 export class HomeComponent {
   private readonly teacherProfileService = inject(TeacherProfileService);
+  private readonly homeContentService = inject(HomeContentService);
   private readonly lessonService = inject(LessonService);
   private readonly translationService = inject(TranslationService);
 
+  protected readonly homeContent = this.homeContentService.currentHomeContent;
   protected readonly profile$ = this.teacherProfileService.getProfile();
   protected readonly lessons$ = this.lessonService.getLessons();
   protected readonly testimonials = [
@@ -43,5 +47,9 @@ export class HomeComponent {
 
   protected t(key: TranslationKey): string {
     return this.translationService.translate(key);
+  }
+
+  protected movableSectionOrder(): HomeSectionKey[] {
+    return this.homeContent().sectionOrder.filter((sectionKey) => sectionKey !== 'hero');
   }
 }

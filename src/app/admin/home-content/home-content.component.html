@@ -1,0 +1,135 @@
+<section class="home-content-page">
+  <div class="studio-shell">
+    <header>
+      <div>
+        <p class="eyebrow">{{ t('homeContent.eyebrow') }}</p>
+        <h1>{{ t('homeContent.title') }}</h1>
+        <p>{{ t('homeContent.languageNote') }}</p>
+      </div>
+
+      <div class="studio-actions">
+        <a mat-stroked-button routerLink="/studio/overview">
+          {{ t('studioOverview.title') }}
+        </a>
+        <a mat-stroked-button routerLink="/studio/settings">
+          {{ t('nav.settings') }}
+        </a>
+      </div>
+    </header>
+
+    <mat-card appearance="outlined" class="order-card">
+      <h2>{{ t('homeContent.orderTitle') }}</h2>
+      <p>{{ t('homeContent.orderHint') }}</p>
+
+      <div class="fixed-section">
+        <span>{{ t('homeContent.fixed') }}</span>
+        <strong>{{ t(sectionLabelKey('hero')) }}</strong>
+      </div>
+
+      <div cdkDropList class="section-order-list" (cdkDropListDropped)="dropSection($event)">
+        @for (sectionKey of movableSectionOrder(); track sectionKey) {
+          <div cdkDrag class="section-order-item">
+            <button cdkDragHandle mat-stroked-button type="button" aria-label="Drag section">
+              {{ t('homeContent.drag') }}
+            </button>
+            <span>{{ t(sectionLabelKey(sectionKey)) }}</span>
+          </div>
+        }
+      </div>
+    </mat-card>
+
+    <div class="content-grid">
+      <mat-card appearance="outlined" class="editor-card hero-editor" [formGroup]="sectionForms.hero">
+        <h2>{{ t(sectionLabelKey('hero')) }}</h2>
+
+        <div class="hero-image-editor">
+          <img [src]="heroPreviewUrl()" alt="Homepage hero preview" />
+          <div>
+            <p>{{ t('homeContent.heroImageHint') }}</p>
+            <input
+              #heroImageInput
+              class="file-input"
+              type="file"
+              accept="image/*"
+              (change)="previewHeroImage($event)"
+            />
+            <button mat-stroked-button type="button" (click)="heroImageInput.click()">
+              {{ t('homeContent.chooseImage') }}
+            </button>
+          </div>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('homeContent.label') }}</mat-label>
+          <input matInput formControlName="label" />
+          @if (sectionForms.hero.controls['label'].hasError('required')) {
+            <mat-error>{{ t('homeContent.labelRequired') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('homeContent.sectionTitle') }}</mat-label>
+          <input matInput formControlName="title" />
+          @if (sectionForms.hero.controls['title'].hasError('required')) {
+            <mat-error>{{ t('homeContent.titleRequired') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('homeContent.summary') }}</mat-label>
+          <textarea matInput rows="5" formControlName="summary"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('homeContent.primaryButton') }}</mat-label>
+          <input matInput formControlName="primaryButtonText" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('homeContent.secondaryButton') }}</mat-label>
+          <input matInput formControlName="secondaryButtonText" />
+        </mat-form-field>
+      </mat-card>
+
+      @for (sectionKey of movableSectionOrder(); track sectionKey) {
+        <mat-card appearance="outlined" class="editor-card" [formGroup]="sectionForms[sectionKey]">
+          <h2>{{ t(sectionLabelKey(sectionKey)) }}</h2>
+
+          @if (sectionKey === 'lessonsServices') {
+            <p>{{ t('homeContent.lessonCardsNote') }}</p>
+          }
+          @if (sectionKey === 'testimonials') {
+            <p>{{ t('homeContent.testimonialCardsNote') }}</p>
+          }
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ t('homeContent.label') }}</mat-label>
+            <input matInput formControlName="label" />
+            @if (sectionForms[sectionKey].controls['label'].hasError('required')) {
+              <mat-error>{{ t('homeContent.labelRequired') }}</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ t('homeContent.sectionTitle') }}</mat-label>
+            <input matInput formControlName="title" />
+            @if (sectionForms[sectionKey].controls['title'].hasError('required')) {
+              <mat-error>{{ t('homeContent.titleRequired') }}</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>{{ t('homeContent.summary') }}</mat-label>
+            <textarea matInput rows="5" formControlName="summary"></textarea>
+          </mat-form-field>
+        </mat-card>
+      }
+    </div>
+
+    <div class="save-bar">
+      <button mat-flat-button type="button" (click)="save()">
+        {{ t('homeContent.save') }}
+      </button>
+    </div>
+  </div>
+</section>
