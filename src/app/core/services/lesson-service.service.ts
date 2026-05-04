@@ -139,22 +139,29 @@ export class LessonServiceService {
     const storedItems = localStorage.getItem(STORAGE_KEY);
 
     if (!storedItems) {
-      return this.normalizeItems(DEFAULT_LESSON_SERVICES);
+      return this.normalizeItems(DEFAULT_LESSON_SERVICES, true);
     }
 
     try {
       const parsedItems = JSON.parse(storedItems) as LessonServiceItem[];
-      return this.normalizeItems(parsedItems);
+      return this.normalizeItems(parsedItems, true);
     } catch {
-      return this.normalizeItems(DEFAULT_LESSON_SERVICES);
+      return this.normalizeItems(DEFAULT_LESSON_SERVICES, true);
     }
   }
 
-  private normalizeItems(items: LessonServiceItem[]): LessonServiceItem[] {
-    return items
-      .filter((item) => item.id && item.label && item.title)
+  private normalizeItems(items: LessonServiceItem[], sortByDisplayOrder = false): LessonServiceItem[] {
+    const validItems = items.filter((item) => item.id && item.label && item.title);
+    const orderedItems = sortByDisplayOrder
+      ? [...validItems].sort(
+          (first, second) =>
+            (first.displayOrder ?? Number.MAX_SAFE_INTEGER) -
+            (second.displayOrder ?? Number.MAX_SAFE_INTEGER),
+        )
+      : validItems;
+
+    return orderedItems
       .slice(0, MAX_LESSON_SERVICE_ITEMS)
-      .sort((first, second) => (first.displayOrder ?? 0) - (second.displayOrder ?? 0))
       .map((item, index) => ({
         ...item,
         summary: item.summary.slice(0, LESSON_SERVICE_SUMMARY_MAX_LENGTH),

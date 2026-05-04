@@ -1,6 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -22,6 +21,7 @@ import {
 } from '../../core/services/lesson-service.service';
 import { TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
+import { StudioNavigationComponent } from '../studio-navigation/studio-navigation.component';
 
 @Component({
   selector: 'app-lesson-services-admin',
@@ -35,7 +35,7 @@ import { TranslationService } from '../../core/i18n/translation.service';
     MatInputModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    RouterLink,
+    StudioNavigationComponent,
   ],
   templateUrl: './lesson-services-admin.component.html',
   styleUrl: './lesson-services-admin.component.scss',

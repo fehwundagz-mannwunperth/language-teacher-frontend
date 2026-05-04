@@ -15,9 +15,37 @@ h1 {
 mat-card {
   padding: 1.4rem;
   background: var(--app-surface);
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
-time,
+mat-card:hover,
+mat-card:focus-visible {
+  border-color: color-mix(in srgb, var(--app-primary), var(--app-border) 45%);
+  box-shadow: 0 0.8rem 1.7rem var(--app-shadow);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+time {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--app-primary);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0 0 0.55rem;
+  color: var(--app-ink);
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
 p {
   color: var(--app-muted);
 }

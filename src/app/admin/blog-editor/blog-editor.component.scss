@@ -1,16 +1,50 @@
-.admin-page {
-  width: min(100% - 2rem, 48rem);
+.blog-admin-page {
+  min-height: 100vh;
+  background: var(--app-background);
+}
+
+.studio-shell {
+  width: min(100% - 2rem, 72rem);
   margin-inline: auto;
-  padding-block: 3rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.admin-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
 }
 
 h1 {
-  margin: 0 0 1.5rem;
+  margin-bottom: 0.7rem;
+  color: var(--app-ink);
   font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  margin-bottom: 0.8rem;
+  color: var(--app-ink);
+  font-size: 1.15rem;
 }
 
 mat-card {
-  padding: 1.4rem;
+  padding: 1.3rem;
+  border-color: var(--app-border);
   background: var(--app-surface);
 }
 
@@ -20,7 +54,95 @@ p {
 }
 
 .eyebrow {
+  margin-bottom: 0.65rem;
   color: var(--app-primary);
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.editor-card,
+.content-blocks,
+.post-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.editor-card {
+  align-self: start;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.block-toolbar,
+.form-actions,
+.format-controls,
+.row-actions,
+.image-picker,
+.block-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.block-heading {
+  justify-content: space-between;
+}
+
+.content-block,
+.post-row {
+  display: grid;
+  gap: 0.85rem;
+  padding: 0.9rem;
+  border: 1px solid var(--app-border);
+  border-radius: 0.5rem;
+  background: rgba(255, 253, 248, 0.86);
+}
+
+.content-block strong,
+.post-copy strong {
+  color: var(--app-ink);
+}
+
+.image-picker input {
+  display: none;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 20rem;
+  border-radius: 0.5rem;
+}
+
+time {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--app-primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.post-copy p {
+  margin: 0.25rem 0 0;
+}
+
+@media (min-width: 920px) {
+  .admin-grid {
+    grid-template-columns: minmax(22rem, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .post-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
 }

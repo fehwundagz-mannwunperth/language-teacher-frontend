@@ -1,0 +1,16 @@
+<nav class="studio-subnav" aria-label="Studio navigation">
+  @for (item of studioNavItems; track item.path) {
+    <a
+      mat-stroked-button
+      [routerLink]="item.path"
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      {{ t(item.labelKey) }}
+    </a>
+  }
+
+  <button mat-stroked-button type="button" (click)="logout()">
+    {{ t('nav.logout') }}
+  </button>
+</nav>

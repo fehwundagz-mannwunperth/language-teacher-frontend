@@ -6,7 +6,6 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,6 +15,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminAuthService } from '../../core/auth/admin-auth.service';
 import { TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
+import { StudioNavigationComponent } from '../studio-navigation/studio-navigation.component';
 
 @Component({
   selector: 'app-studio-settings',
@@ -26,7 +26,7 @@ import { TranslationService } from '../../core/i18n/translation.service';
     MatInputModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    RouterLink,
+    StudioNavigationComponent,
   ],
   templateUrl: './studio-settings.component.html',
   styleUrl: './studio-settings.component.scss',
@@ -34,7 +34,6 @@ import { TranslationService } from '../../core/i18n/translation.service';
 export class StudioSettingsComponent {
   private readonly adminAuthService = inject(AdminAuthService);
   private readonly formBuilder = inject(FormBuilder);
-  private readonly router = inject(Router);
   private readonly snackBar = inject(MatSnackBar);
   private readonly translationService = inject(TranslationService);
 
@@ -83,11 +82,6 @@ export class StudioSettingsComponent {
 
     this.passwordForm.reset();
     this.showSuccess('studioSettings.passwordSaveSuccess');
-  }
-
-  protected logout(): void {
-    this.adminAuthService.logout();
-    void this.router.navigate(['/']);
   }
 
   protected t(key: TranslationKey): string {

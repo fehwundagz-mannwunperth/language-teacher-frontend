@@ -6,16 +6,9 @@
         <h1>{{ t('homeContent.title') }}</h1>
         <p>{{ t('homeContent.languageNote') }}</p>
       </div>
-
-      <div class="studio-actions">
-        <a mat-stroked-button routerLink="/studio/overview">
-          {{ t('studioOverview.title') }}
-        </a>
-        <a mat-stroked-button routerLink="/studio/settings">
-          {{ t('nav.settings') }}
-        </a>
-      </div>
     </header>
+
+    <app-studio-navigation />
 
     <mat-card appearance="outlined" class="order-card">
       <h2>{{ t('homeContent.orderTitle') }}</h2>
@@ -43,9 +36,11 @@
         <h2>{{ t(sectionLabelKey('hero')) }}</h2>
 
         <div class="hero-image-editor">
-          <img [src]="heroPreviewUrl()" alt="Homepage hero preview" />
-          <div>
-            <p>{{ t('homeContent.heroImageHint') }}</p>
+          <div class="hero-preview-card">
+            <img [src]="heroPreviewUrl()" alt="Homepage hero preview" />
+          </div>
+
+          <div class="hero-upload-controls">
             <input
               #heroImageInput
               class="file-input"
@@ -53,9 +48,16 @@
               accept="image/*"
               (change)="previewHeroImage($event)"
             />
-            <button mat-stroked-button type="button" (click)="heroImageInput.click()">
-              {{ t('homeContent.chooseImage') }}
+
+            <button mat-flat-button class="upload-button" type="button" (click)="heroImageInput.click()">
+              {{ t(heroImageButtonLabel()) }}
             </button>
+
+            @if (selectedHeroImageName()) {
+              <p class="selected-file-name">{{ selectedHeroImageName() }}</p>
+            }
+
+            <p class="upload-helper">{{ t('homeContent.heroImageHint') }}</p>
           </div>
         </div>
 

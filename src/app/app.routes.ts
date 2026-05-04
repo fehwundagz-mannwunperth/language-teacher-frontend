@@ -9,45 +9,6 @@ export const routes: Routes = [
       import('./public/studio-login/studio-login.component').then((m) => m.StudioLoginComponent),
   },
   {
-    path: 'studio',
-    canActivateChild: [adminAuthChildGuard],
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'overview',
-      },
-      {
-        path: 'overview',
-        loadComponent: () =>
-          import('./admin/studio-overview/studio-overview.component').then(
-            (m) => m.StudioOverviewComponent,
-          ),
-      },
-      {
-        path: 'settings',
-        loadComponent: () =>
-          import('./admin/studio-settings/studio-settings.component').then(
-            (m) => m.StudioSettingsComponent,
-          ),
-      },
-      {
-        path: 'home-content',
-        loadComponent: () =>
-          import('./admin/home-content/home-content.component').then(
-            (m) => m.HomeContentComponent,
-          ),
-      },
-      {
-        path: 'lessons-services',
-        loadComponent: () =>
-          import('./admin/lesson-services/lesson-services-admin.component').then(
-            (m) => m.LessonServicesAdminComponent,
-          ),
-      },
-    ],
-  },
-  {
     path: 'admin',
     canActivateChild: [adminAuthChildGuard],
     children: [
@@ -123,6 +84,11 @@ export const routes: Routes = [
         loadComponent: () => import('./public/blog/blog.component').then((m) => m.BlogComponent),
       },
       {
+        path: 'blog/:id',
+        loadComponent: () =>
+          import('./public/blog-detail/blog-detail.component').then((m) => m.BlogDetailComponent),
+      },
+      {
         path: 'contact',
         loadComponent: () =>
           import('./public/contact/contact.component').then((m) => m.ContactComponent),
@@ -140,6 +106,50 @@ export const routes: Routes = [
           import('./public/privacy-policy/privacy-policy.component').then(
             (m) => m.PrivacyPolicyComponent,
           ),
+      },
+      {
+        path: 'studio',
+        canActivateChild: [adminAuthChildGuard],
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'overview',
+          },
+          {
+            path: 'overview',
+            loadComponent: () =>
+              import('./admin/studio-overview/studio-overview.component').then(
+                (m) => m.StudioOverviewComponent,
+              ),
+          },
+          {
+            path: 'settings',
+            loadComponent: () =>
+              import('./admin/studio-settings/studio-settings.component').then(
+                (m) => m.StudioSettingsComponent,
+              ),
+          },
+          {
+            path: 'home-content',
+            loadComponent: () =>
+              import('./admin/home-content/home-content.component').then(
+                (m) => m.HomeContentComponent,
+              ),
+          },
+          {
+            path: 'lessons-services',
+            loadComponent: () =>
+              import('./admin/lesson-services/lesson-services-admin.component').then(
+                (m) => m.LessonServicesAdminComponent,
+              ),
+          },
+          {
+            path: 'blog',
+            loadComponent: () =>
+              import('./admin/blog-editor/blog-editor.component').then((m) => m.BlogEditorComponent),
+          },
+        ],
       },
     ],
   },

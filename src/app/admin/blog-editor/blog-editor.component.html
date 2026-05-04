@@ -1,10 +1,184 @@
-<section class="admin-page">
-  <p class="eyebrow">Admin demo</p>
-  <h1>Blog editor</h1>
-  <mat-card appearance="outlined">
-    <p>
-      Placeholder for creating and editing blog posts. Authentication, roles, and API writes are
-      intentionally left out for now.
-    </p>
-  </mat-card>
+<section class="blog-admin-page">
+  <div class="studio-shell">
+    <header>
+      <div>
+        <p class="eyebrow">{{ t('blogAdmin.eyebrow') }}</p>
+        <h1>{{ t('blogAdmin.title') }}</h1>
+        <p>{{ t('blogAdmin.copy') }}</p>
+      </div>
+    </header>
+
+    <app-studio-navigation />
+
+    <div class="admin-grid">
+      <mat-card appearance="outlined" class="editor-card" [formGroup]="form">
+        <h2>
+          @if (isEditing()) {
+            {{ t('blogAdmin.editTitle') }}
+          } @else {
+            {{ t('blogAdmin.createTitle') }}
+          }
+        </h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('blogAdmin.postTitle') }}</mat-label>
+          <input matInput formControlName="title" />
+          @if (form.controls.title.hasError('required')) {
+            <mat-error>{{ t('blogAdmin.required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('blogAdmin.summary') }}</mat-label>
+          <textarea matInput rows="3" formControlName="summary"></textarea>
+          <mat-hint align="end">
+            {{ form.controls.summary.value.length }}/{{ summaryMaxLength }}
+          </mat-hint>
+          @if (form.controls.summary.hasError('required')) {
+            <mat-error>{{ t('blogAdmin.required') }}</mat-error>
+          }
+          @if (form.controls.summary.hasError('maxlength')) {
+            <mat-error>{{ t('blogAdmin.summaryTooLong') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="block-toolbar">
+          <button mat-stroked-button type="button" (click)="addBlock('subtitle')">
+            {{ t('blogAdmin.addSubtitle') }}
+          </button>
+          <button mat-stroked-button type="button" (click)="addBlock('paragraph')">
+            {{ t('blogAdmin.addParagraph') }}
+          </button>
+          <button mat-stroked-button type="button" (click)="addBlock('image')">
+            {{ t('blogAdmin.addImage') }}
+          </button>
+        </div>
+
+        <div class="content-blocks">
+          @for (block of contentBlocks(); track block.id) {
+            <section class="content-block">
+              <div class="block-heading">
+                <strong>
+                  @if (block.type === 'subtitle') {
+                    {{ t('blogAdmin.subtitleBlock') }}
+                  }
+                  @if (block.type === 'paragraph') {
+                    {{ t('blogAdmin.paragraphBlock') }}
+                  }
+                  @if (block.type === 'image') {
+                    {{ t('blogAdmin.imageBlock') }}
+                  }
+                </strong>
+                <button mat-stroked-button type="button" (click)="removeBlock(block.id)">
+                  {{ t('blogAdmin.removeBlock') }}
+                </button>
+              </div>
+
+              @if (block.type === 'subtitle') {
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ t('blogAdmin.subtitle') }}</mat-label>
+                  <input
+                    matInput
+                    [ngModel]="block.text"
+                    (ngModelChange)="block.text = $event"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
+                </mat-form-field>
+              }
+
+              @if (block.type === 'paragraph') {
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ t('blogAdmin.paragraph') }}</mat-label>
+                  <textarea
+                    matInput
+                    rows="5"
+                    [ngModel]="block.text"
+                    (ngModelChange)="block.text = $event"
+                    [ngModelOptions]="{ standalone: true }"
+                  ></textarea>
+                </mat-form-field>
+
+                <div class="format-controls">
+                  <mat-checkbox [(ngModel)]="block.bold" [ngModelOptions]="{ standalone: true }">
+                    {{ t('blogAdmin.bold') }}
+                  </mat-checkbox>
+                  <mat-checkbox [(ngModel)]="block.italic" [ngModelOptions]="{ standalone: true }">
+                    {{ t('blogAdmin.italic') }}
+                  </mat-checkbox>
+                  <mat-checkbox
+                    [(ngModel)]="block.underline"
+                    [ngModelOptions]="{ standalone: true }"
+                  >
+                    {{ t('blogAdmin.underline') }}
+                  </mat-checkbox>
+                </div>
+              }
+
+              @if (block.type === 'image') {
+                <div class="image-picker">
+                  <input
+                    #imageInput
+                    type="file"
+                    accept="image/*"
+                    (change)="updateImagePreview($event, block.id)"
+                  />
+                  <button mat-stroked-button type="button" (click)="imageInput.click()">
+                    {{ block.imageUrl ? t('blogAdmin.changeImage') : t('blogAdmin.chooseImage') }}
+                  </button>
+                  @if (block.imageName) {
+                    <span>{{ block.imageName }}</span>
+                  }
+                </div>
+
+                @if (block.imageUrl) {
+                  <figure>
+                    <img [src]="block.imageUrl" [alt]="block.imageName || t('blogAdmin.imageBlock')" />
+                  </figure>
+                }
+              }
+            </section>
+          }
+        </div>
+
+        <div class="form-actions">
+          <button mat-flat-button type="button" (click)="save()">
+            @if (isEditing()) {
+              {{ t('blogAdmin.update') }}
+            } @else {
+              {{ t('blogAdmin.create') }}
+            }
+          </button>
+          <button mat-stroked-button type="button" (click)="resetForm()">
+            {{ t('blogAdmin.cancel') }}
+          </button>
+        </div>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="list-card">
+        <h2>{{ t('blogAdmin.listTitle') }}</h2>
+        <div class="post-list">
+          @for (post of posts(); track post.id) {
+            <article class="post-row">
+              <div class="post-copy">
+                <time>{{ post.createdAt | date: 'mediumDate' }}</time>
+                <strong>{{ post.title }}</strong>
+                <p>{{ post.summary }}</p>
+              </div>
+
+              <div class="row-actions">
+                <button mat-stroked-button type="button" (click)="editPost(post)">
+                  {{ t('blogAdmin.edit') }}
+                </button>
+                <button mat-stroked-button type="button" (click)="deletePost(post)">
+                  {{ t('blogAdmin.delete') }}
+                </button>
+              </div>
+            </article>
+          } @empty {
+            <p>{{ t('blogAdmin.empty') }}</p>
+          }
+        </div>
+      </mat-card>
+    </div>
+  </div>
 </section>

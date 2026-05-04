@@ -1,0 +1,16 @@
+.studio-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.studio-subnav a,
+.studio-subnav button {
+  background: rgba(255, 253, 248, 0.86);
+}
+
+.active-link {
+  color: var(--app-primary);
+  border-color: color-mix(in srgb, var(--app-primary) 55%, var(--app-border));
+}

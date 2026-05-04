@@ -1,6 +1,5 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -22,6 +21,7 @@ import {
 import { HomeContentService } from '../../core/services/home-content.service';
 import { LanguageCode, TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
+import { StudioNavigationComponent } from '../studio-navigation/studio-navigation.component';
 
 type SectionFormValue = Omit<EditableHomeSectionContent, 'key'>;
 
@@ -37,7 +37,7 @@ type SectionFormValue = Omit<EditableHomeSectionContent, 'key'>;
     MatInputModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    RouterLink,
+    StudioNavigationComponent,
   ],
   templateUrl: './home-content.component.html',
   styleUrl: './home-content.component.scss',
@@ -56,6 +56,10 @@ export class HomeContentComponent {
   ];
   protected readonly currentLanguage = this.translationService.currentLanguage;
   protected readonly heroPreviewUrl = signal('');
+  protected readonly selectedHeroImageName = signal('');
+  protected readonly heroImageButtonLabel = computed<TranslationKey>(() =>
+    this.selectedHeroImageName() ? 'homeContent.changeImage' : 'homeContent.chooseImage',
+  );
   protected readonly movableSectionOrder = signal<HomeSectionKey[]>([]);
   protected readonly sectionForms: Record<HomeSectionKey, FormGroup> = {
     hero: this.createSectionForm(true),
@@ -100,6 +104,8 @@ export class HomeContentComponent {
       return;
     }
 
+    this.selectedHeroImageName.set(file.name);
+
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === 'string') {
@@ -134,6 +140,7 @@ export class HomeContentComponent {
       this.sectionForms[sectionKey].reset(content.sections[sectionKey]);
     });
     this.heroPreviewUrl.set(content.heroImageUrl);
+    this.selectedHeroImageName.set('');
     this.movableSectionOrder.set(
       content.sectionOrder.filter((sectionKey) => sectionKey !== 'hero'),
     );

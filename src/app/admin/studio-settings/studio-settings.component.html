@@ -5,16 +5,9 @@
         <p class="eyebrow">{{ t('studioSettings.eyebrow') }}</p>
         <h1>{{ t('studioSettings.title') }}</h1>
       </div>
-
-      <div class="studio-actions">
-        <a mat-stroked-button routerLink="/studio/overview">
-          {{ t('studioOverview.title') }}
-        </a>
-        <button mat-stroked-button type="button" (click)="logout()">
-          {{ t('nav.logout') }}
-        </button>
-      </div>
     </header>
+
+    <app-studio-navigation />
 
     <div class="settings-grid">
       <mat-card appearance="outlined">

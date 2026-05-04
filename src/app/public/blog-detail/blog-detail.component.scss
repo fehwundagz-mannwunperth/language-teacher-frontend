@@ -1,0 +1,77 @@
+.page-section {
+  padding-block: 3rem 5rem;
+}
+
+article {
+  width: min(100%, 48rem);
+  margin-inline: auto;
+  text-align: left;
+}
+
+a {
+  margin-bottom: 1.5rem;
+}
+
+time {
+  display: block;
+  margin-bottom: 0.9rem;
+  color: var(--app-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  color: var(--app-ink);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+}
+
+h2 {
+  margin: 2rem 0 0.75rem;
+  color: var(--app-ink);
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+p {
+  color: var(--app-muted);
+  line-height: 1.75;
+}
+
+.summary {
+  margin-bottom: 2rem;
+  color: var(--app-ink);
+  font-size: 1.1rem;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}

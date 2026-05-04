@@ -66,6 +66,22 @@ mat-card {
   background: var(--app-surface);
 }
 
+.clickable-card {
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.clickable-card:hover,
+.clickable-card:focus-visible {
+  border-color: color-mix(in srgb, var(--app-primary), var(--app-border) 45%);
+  box-shadow: 0 0.8rem 1.7rem var(--app-shadow);
+  outline: none;
+  transform: translateY(-2px);
+}
+
 @media (min-width: 760px) {
   .studio-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));

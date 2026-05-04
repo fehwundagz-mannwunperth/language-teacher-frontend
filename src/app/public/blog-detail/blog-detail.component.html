@@ -1,0 +1,41 @@
+<section class="page-shell page-section">
+  @if (post(); as blogPost) {
+    <a mat-button routerLink="/blog">{{ t('blog.backToList') }}</a>
+
+    <article>
+      <time>{{ blogPost.createdAt | date: 'mediumDate' }}</time>
+      <h1>{{ blogPost.title }}</h1>
+      <p class="summary">{{ blogPost.summary }}</p>
+
+      <div class="content">
+        @for (block of blogPost.contentBlocks; track block.id) {
+          @if (block.type === 'subtitle') {
+            <h2>{{ block.text }}</h2>
+          }
+
+          @if (block.type === 'paragraph') {
+            <p
+              [class.bold]="block.bold"
+              [class.italic]="block.italic"
+              [class.underline]="block.underline"
+            >
+              {{ block.text }}
+            </p>
+          }
+
+          @if (block.type === 'image' && block.imageUrl) {
+            <figure>
+              <img [src]="block.imageUrl" [alt]="block.imageName || blogPost.title" />
+            </figure>
+          }
+        }
+      </div>
+    </article>
+  } @else {
+    <article>
+      <h1>{{ t('blog.notFoundTitle') }}</h1>
+      <p class="summary">{{ t('blog.notFoundCopy') }}</p>
+      <a mat-flat-button routerLink="/blog">{{ t('blog.backToList') }}</a>
+    </article>
+  }
+</section>

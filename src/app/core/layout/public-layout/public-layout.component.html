@@ -5,7 +5,7 @@
   </a>
 
   <nav class="desktop-nav" aria-label="Main navigation">
-    @for (item of navItems; track item.path) {
+    @for (item of navItems(); track item.path) {
       <a
         mat-button
         [routerLink]="item.path"
@@ -14,18 +14,6 @@
       >
         {{ t(item.labelKey) }}
       </a>
-    }
-    @if (isAdminLoggedIn()) {
-      <a mat-button routerLink="/studio/overview" routerLinkActive="active-link">
-        {{ t('nav.studio') }}
-      </a>
-      <a mat-button routerLink="/studio/home-content" routerLinkActive="active-link">
-        {{ t('nav.homeContent') }}
-      </a>
-      <a mat-button routerLink="/studio/lessons-services" routerLinkActive="active-link">
-        {{ t('nav.lessons') }}
-      </a>
-      <button mat-button type="button" (click)="logout()">{{ t('nav.logout') }}</button>
     }
   </nav>
 
@@ -51,14 +39,8 @@
     Menu
   </button>
   <mat-menu #mobileMenu="matMenu">
-    @for (item of navItems; track item.path) {
+    @for (item of navItems(); track item.path) {
       <a mat-menu-item [routerLink]="item.path">{{ t(item.labelKey) }}</a>
-    }
-    @if (isAdminLoggedIn()) {
-      <a mat-menu-item routerLink="/studio/overview">{{ t('nav.studio') }}</a>
-      <a mat-menu-item routerLink="/studio/home-content">{{ t('nav.homeContent') }}</a>
-      <a mat-menu-item routerLink="/studio/lessons-services">{{ t('nav.lessons') }}</a>
-      <button mat-menu-item type="button" (click)="logout()">{{ t('nav.logout') }}</button>
     }
   </mat-menu>
 </mat-toolbar>

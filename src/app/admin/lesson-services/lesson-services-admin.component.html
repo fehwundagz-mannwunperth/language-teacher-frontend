@@ -6,16 +6,9 @@
         <h1>{{ t('lessonServicesAdmin.title') }}</h1>
         <p>{{ t('lessonServicesAdmin.copy') }}</p>
       </div>
-
-      <div class="studio-actions">
-        <a mat-stroked-button routerLink="/studio/overview">
-          {{ t('studioOverview.title') }}
-        </a>
-        <a mat-stroked-button routerLink="/studio/home-content">
-          {{ t('nav.homeContent') }}
-        </a>
-      </div>
     </header>
+
+    <app-studio-navigation />
 
     <div class="admin-grid">
       <mat-card appearance="outlined" class="editor-card" [formGroup]="form">
@@ -91,9 +84,14 @@
         <h2>{{ t('lessonServicesAdmin.orderTitle') }}</h2>
         <p>{{ t('lessonServicesAdmin.orderHint') }}</p>
 
-        <div cdkDropList class="item-list" (cdkDropListDropped)="dropItem($event)">
+        <div
+          cdkDropList
+          class="item-list"
+          [cdkDropListData]="items()"
+          (cdkDropListDropped)="dropItem($event)"
+        >
           @for (item of items(); track item.id) {
-            <div cdkDrag class="item-row">
+            <div cdkDrag class="item-row" [cdkDragData]="item">
               <button cdkDragHandle mat-stroked-button type="button">
                 {{ t('homeContent.drag') }}
               </button>

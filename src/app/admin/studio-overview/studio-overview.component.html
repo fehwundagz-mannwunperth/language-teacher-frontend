@@ -5,22 +5,9 @@
         <p class="eyebrow">{{ t('studioOverview.eyebrow') }}</p>
         <h1>{{ t('studioOverview.title') }}</h1>
       </div>
-
-      <div class="studio-actions">
-        <a mat-stroked-button routerLink="/studio/home-content">
-          {{ t('nav.homeContent') }}
-        </a>
-        <a mat-stroked-button routerLink="/studio/lessons-services">
-          {{ t('nav.lessons') }}
-        </a>
-        <a mat-stroked-button routerLink="/studio/settings">
-          {{ t('nav.settings') }}
-        </a>
-        <button mat-stroked-button type="button" (click)="logout()">
-          {{ t('nav.logout') }}
-        </button>
-      </div>
     </header>
+
+    <app-studio-navigation />
 
     <div class="studio-grid">
       <mat-card appearance="outlined">
@@ -33,7 +20,7 @@
         <p>{{ t('studioOverview.contentCopy') }}</p>
       </mat-card>
 
-      <mat-card appearance="outlined">
+      <mat-card appearance="outlined" routerLink="/studio/blog" tabindex="0" class="clickable-card">
         <h2>{{ t('studioOverview.blogTitle') }}</h2>
         <p>{{ t('studioOverview.blogCopy') }}</p>
       </mat-card>
