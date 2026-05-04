@@ -1,5 +1,6 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import {
   CdkDrag,
   CdkDragDrop,
@@ -37,6 +38,7 @@ type SectionFormValue = Omit<EditableHomeSectionContent, 'key'>;
     MatInputModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    RouterLink,
     StudioNavigationComponent,
   ],
   templateUrl: './home-content.component.html',

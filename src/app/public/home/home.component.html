@@ -108,11 +108,13 @@
             </div>
 
             <div class="testimonial-grid">
-              @for (testimonial of testimonials; track testimonial.nameKey) {
+              @for (testimonial of testimonials(); track testimonial.id) {
                 <mat-card appearance="outlined">
-                  <p class="quote">"{{ t(testimonial.quoteKey) }}"</p>
-                  <strong>{{ t(testimonial.nameKey) }}</strong>
-                  <span>{{ t(testimonial.contextKey) }}</span>
+                  <p class="quote">"{{ testimonial.quote }}"</p>
+                  <strong>{{ testimonial.studentName }}</strong>
+                  @if (testimonial.studentRoleOrContext) {
+                    <span>{{ testimonial.studentRoleOrContext }}</span>
+                  }
                 </mat-card>
               }
             </div>

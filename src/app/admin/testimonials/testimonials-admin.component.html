@@ -1,0 +1,106 @@
+<section class="testimonials-admin-page">
+  <div class="studio-shell">
+    <header>
+      <div>
+        <p class="eyebrow">{{ t('testimonialsAdmin.eyebrow') }}</p>
+        <h1>{{ t('testimonialsAdmin.title') }}</h1>
+        <p>{{ t('testimonialsAdmin.copy') }}</p>
+      </div>
+    </header>
+
+    <app-studio-navigation />
+
+    <div class="admin-grid">
+      <mat-card appearance="outlined" class="editor-card" [formGroup]="form">
+        <h2>
+          @if (isEditing()) {
+            {{ t('testimonialsAdmin.editTitle') }}
+          } @else {
+            {{ t('testimonialsAdmin.createTitle') }}
+          }
+        </h2>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('testimonialsAdmin.studentName') }}</mat-label>
+          <input matInput formControlName="studentName" />
+          @if (form.controls.studentName.hasError('required')) {
+            <mat-error>{{ t('testimonialsAdmin.required') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('testimonialsAdmin.studentRoleOrContext') }}</mat-label>
+          <input matInput formControlName="studentRoleOrContext" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ t('testimonialsAdmin.quote') }}</mat-label>
+          <textarea matInput rows="6" formControlName="quote"></textarea>
+          <mat-hint align="end">
+            {{ form.controls.quote.value.length }}/{{ quoteMaxLength }}
+          </mat-hint>
+          @if (form.controls.quote.hasError('required')) {
+            <mat-error>{{ t('testimonialsAdmin.required') }}</mat-error>
+          }
+          @if (form.controls.quote.hasError('maxlength')) {
+            <mat-error>{{ t('testimonialsAdmin.quoteTooLong') }}</mat-error>
+          }
+        </mat-form-field>
+
+        <div class="form-actions">
+          <button mat-flat-button type="button" (click)="save()">
+            @if (isEditing()) {
+              {{ t('testimonialsAdmin.update') }}
+            } @else {
+              {{ t('testimonialsAdmin.create') }}
+            }
+          </button>
+          <button mat-stroked-button type="button" (click)="resetForm()">
+            {{ t('testimonialsAdmin.cancel') }}
+          </button>
+        </div>
+      </mat-card>
+
+      <mat-card appearance="outlined" class="list-card">
+        <h2>{{ t('testimonialsAdmin.orderTitle') }}</h2>
+        <p>{{ t('testimonialsAdmin.orderHint') }}</p>
+
+        @if (testimonials().length) {
+          <div
+            cdkDropList
+            class="item-list"
+            [cdkDropListData]="testimonials()"
+            (cdkDropListDropped)="dropItem($event)"
+          >
+            @for (testimonial of testimonials(); track testimonial.id) {
+              <div cdkDrag class="item-row" [cdkDragData]="testimonial">
+                <button cdkDragHandle mat-stroked-button type="button">
+                  {{ t('homeContent.drag') }}
+                </button>
+
+                <div class="item-copy">
+                  <strong>{{ testimonial.studentName }}</strong>
+                  @if (testimonial.studentRoleOrContext) {
+                    <span>{{ testimonial.studentRoleOrContext }}</span>
+                  }
+                  <p>"{{ testimonial.quote }}"</p>
+                </div>
+
+                <div class="row-actions">
+                  <button mat-stroked-button type="button" (click)="editItem(testimonial)">
+                    {{ t('testimonialsAdmin.edit') }}
+                  </button>
+                  <button mat-stroked-button type="button" (click)="deleteItem(testimonial)">
+                    {{ t('testimonialsAdmin.delete') }}
+                  </button>
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <p class="empty-copy">{{ t('testimonialsAdmin.empty') }}</p>
+        }
+      </mat-card>
+    </div>
+  </div>
+</section>

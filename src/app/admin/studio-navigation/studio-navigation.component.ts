@@ -22,6 +22,7 @@ export class StudioNavigationComponent {
     { labelKey: 'nav.homeContent', path: '/studio/home-content' },
     { labelKey: 'nav.lessons', path: '/studio/lessons-services' },
     { labelKey: 'nav.blog', path: '/studio/blog' },
+    { labelKey: 'nav.testimonials', path: '/studio/testimonials' },
     { labelKey: 'nav.settings', path: '/studio/settings' },
   ];
 

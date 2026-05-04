@@ -149,6 +149,13 @@ export const routes: Routes = [
             loadComponent: () =>
               import('./admin/blog-editor/blog-editor.component').then((m) => m.BlogEditorComponent),
           },
+          {
+            path: 'testimonials',
+            loadComponent: () =>
+              import('./admin/testimonials/testimonials-admin.component').then(
+                (m) => m.TestimonialsAdminComponent,
+              ),
+          },
         ],
       },
     ],

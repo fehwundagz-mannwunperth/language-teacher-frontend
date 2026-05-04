@@ -101,7 +101,12 @@
             <p>{{ t('homeContent.lessonCardsNote') }}</p>
           }
           @if (sectionKey === 'testimonials') {
-            <p>{{ t('homeContent.testimonialCardsNote') }}</p>
+            <p>
+              {{ t('homeContent.testimonialCardsNote') }}
+              <a mat-button routerLink="/studio/testimonials">
+                {{ t('nav.testimonials') }}
+              </a>
+            </p>
           }
 
           <mat-form-field appearance="outline">

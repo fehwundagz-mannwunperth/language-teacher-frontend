@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { HomeSectionKey } from '../../models/editable-home-content.model';
 import { HomeContentService } from '../../core/services/home-content.service';
 import { LessonServiceService } from '../../core/services/lesson-service.service';
+import { TestimonialService } from '../../core/services/testimonial.service';
 import { TranslationKey } from '../../core/i18n/language.model';
 import { TranslationService } from '../../core/i18n/translation.service';
 import { TeacherProfileService } from '../../core/services/teacher-profile.service';
@@ -22,12 +23,14 @@ export class HomeComponent implements OnDestroy {
   private readonly teacherProfileService = inject(TeacherProfileService);
   private readonly homeContentService = inject(HomeContentService);
   private readonly lessonServiceService = inject(LessonServiceService);
+  private readonly testimonialService = inject(TestimonialService);
   private readonly translationService = inject(TranslationService);
   private readonly carouselIntervalId = window.setInterval(() => this.showNextSlide(), 5000);
 
   protected readonly homeContent = this.homeContentService.currentHomeContent;
   protected readonly profile$ = this.teacherProfileService.getProfile();
   protected readonly lessonServices = this.lessonServiceService.lessonServices;
+  protected readonly testimonials = this.testimonialService.publicTestimonials;
   protected readonly activeSlideIndex = signal(0);
   protected readonly visibleLessonServices = computed(() => {
     const items = this.lessonServices();
@@ -41,24 +44,6 @@ export class HomeComponent implements OnDestroy {
       return items[itemIndex];
     });
   });
-  protected readonly testimonials = [
-    {
-      quoteKey: 'home.testimonial1.quote',
-      nameKey: 'home.testimonial1.name',
-      contextKey: 'home.testimonial1.context',
-    },
-    {
-      quoteKey: 'home.testimonial2.quote',
-      nameKey: 'home.testimonial2.name',
-      contextKey: 'home.testimonial2.context',
-    },
-    {
-      quoteKey: 'home.testimonial3.quote',
-      nameKey: 'home.testimonial3.name',
-      contextKey: 'home.testimonial3.context',
-    },
-  ] satisfies { quoteKey: TranslationKey; nameKey: TranslationKey; contextKey: TranslationKey }[];
-
   protected t(key: TranslationKey): string {
     return this.translationService.translate(key);
   }
