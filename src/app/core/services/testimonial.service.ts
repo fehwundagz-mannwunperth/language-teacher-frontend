@@ -37,17 +37,17 @@ export class TestimonialService {
 
   readonly publicTestimonials = this.items.asReadonly();
 
-  getPublicTestimonials(): Testimonial[] {
+  public getPublicTestimonials(): Testimonial[] {
     // Future Spring Boot endpoint: GET /api/public/testimonials
     return this.items();
   }
 
-  getAdminTestimonials(): Testimonial[] {
+  public getAdminTestimonials(): Testimonial[] {
     // Future Spring Boot endpoint: GET /api/admin/testimonials
     return this.items();
   }
 
-  createTestimonial(draft: TestimonialDraft): Testimonial {
+  public createTestimonial(draft: TestimonialDraft): Testimonial {
     // Future Spring Boot endpoint: POST /api/admin/testimonials
     this.validateDraft(draft);
 
@@ -62,7 +62,7 @@ export class TestimonialService {
     return nextItem;
   }
 
-  updateTestimonial(id: string, draft: TestimonialDraft): Testimonial {
+  public updateTestimonial(id: string, draft: TestimonialDraft): Testimonial {
     // Future Spring Boot endpoint: PUT /api/admin/testimonials/{id}
     this.validateDraft(draft);
 
@@ -83,7 +83,7 @@ export class TestimonialService {
     return nextItem;
   }
 
-  deleteTestimonial(id: string): void {
+  public deleteTestimonial(id: string): void {
     // Future Spring Boot endpoint: DELETE /api/admin/testimonials/{id}
     const nextItems = this.items().filter((item) => item.id !== id);
 
@@ -94,7 +94,7 @@ export class TestimonialService {
     this.persist(nextItems);
   }
 
-  reorderTestimonials(ids: string[]): void {
+  public reorderTestimonials(ids: string[]): void {
     // Future Spring Boot endpoint: PUT /api/admin/testimonials/order
     const currentItems = this.items();
     const orderedItems = ids

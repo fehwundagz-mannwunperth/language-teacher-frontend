@@ -5,7 +5,7 @@ import { PrivacyPolicy } from '../../models/privacy-policy.model';
 
 @Injectable({ providedIn: 'root' })
 export class PrivacyPolicyService {
-  getPrivacyPolicy(): Observable<PrivacyPolicy> {
+  public getPrivacyPolicy(): Observable<PrivacyPolicy> {
     // Future Spring Boot endpoint: GET /api/public/legal/privacy-policy
     return of({
       sections: [

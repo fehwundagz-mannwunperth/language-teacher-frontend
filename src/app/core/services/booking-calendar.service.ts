@@ -24,12 +24,12 @@ const UNEXPECTED_ERROR_MOCK_STARTS = new Set(['2026-04-27T10:30:00', '2026-05-04
 export class BookingCalendarService {
   private readonly createdBookings: BackendBookingSlot[] = [];
 
-  getWeeklyCalendar(weekStart: string): Observable<BookingCalendar> {
+  public getWeeklyCalendar(weekStart: string): Observable<BookingCalendar> {
     // Future Spring Boot endpoint: GET /api/public/calendar/bookings?weekStart=YYYY-MM-DD
     return of(this.buildWeeklyCalendar(this.getMockBackendResponse(weekStart)));
   }
 
-  createBooking(request: BookingCreateRequest): Observable<BackendBookingSlot> {
+  public createBooking(request: BookingCreateRequest): Observable<BackendBookingSlot> {
     // Future Spring Boot endpoint: POST /api/public/calendar/bookings
     if (CONFLICT_MOCK_STARTS.has(request.start)) {
       return throwError(

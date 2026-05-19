@@ -40,7 +40,7 @@ export class StudioLoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
   });
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     if (this.adminAuthService.refreshSession()) {
       void this.router.navigate(['/studio/overview']);
     }

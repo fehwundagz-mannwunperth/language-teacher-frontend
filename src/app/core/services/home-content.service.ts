@@ -98,7 +98,7 @@ export class HomeContentService {
     this.getPublicHomeContent(this.translationService.currentLanguage()),
   );
 
-  getPublicHomeContent(language: LanguageCode): LocalizedHomeContent {
+  public getPublicHomeContent(language: LanguageCode): LocalizedHomeContent {
     // Future Spring Boot endpoint: GET /api/public/home-content
     const state = this.state();
     return {
@@ -108,12 +108,12 @@ export class HomeContentService {
     };
   }
 
-  getAdminHomeContent(language: LanguageCode): LocalizedHomeContent {
+  public getAdminHomeContent(language: LanguageCode): LocalizedHomeContent {
     // Future Spring Boot endpoint: GET /api/admin/home-content
     return this.getPublicHomeContent(language);
   }
 
-  saveAdminHomeContent(language: LanguageCode, sections: EditableHomeSections): void {
+  public saveAdminHomeContent(language: LanguageCode, sections: EditableHomeSections): void {
     // Future Spring Boot endpoint: PUT /api/admin/home-content
     this.patchState({
       sectionsByLanguage: {
@@ -123,13 +123,13 @@ export class HomeContentService {
     });
   }
 
-  saveSectionOrder(sectionOrder: HomeSectionKey[]): void {
+  public saveSectionOrder(sectionOrder: HomeSectionKey[]): void {
     // Future Spring Boot endpoint: PUT /api/admin/home-section-order
     const sanitizedOrder = this.normalizeSectionOrder(sectionOrder);
     this.patchState({ sectionOrder: sanitizedOrder });
   }
 
-  saveHeroImage(heroImageUrl: string): void {
+  public saveHeroImage(heroImageUrl: string): void {
     // Future Spring Boot endpoint: PUT /api/admin/home/hero-image
     this.patchState({ heroImageUrl });
   }

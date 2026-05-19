@@ -5,7 +5,7 @@ import { FooterProviderInfo } from '../../models/footer-provider-info.model';
 
 @Injectable({ providedIn: 'root' })
 export class FooterInfoService {
-  getProviderInfo(): Observable<FooterProviderInfo> {
+  public getProviderInfo(): Observable<FooterProviderInfo> {
     // Future Spring Boot endpoint: GET /api/public/footer/provider-info
     return of({
       companyName: 'KBR Bt',

@@ -51,22 +51,22 @@ export class BlogService {
 
   readonly blogPosts = this.posts.asReadonly();
 
-  getPosts(): Observable<BlogPost[]> {
+  public getPosts(): Observable<BlogPost[]> {
     // Future Spring Boot endpoint: GET /api/public/blog
     return of(this.posts());
   }
 
-  getPostById(id: string): BlogPost | undefined {
+  public getPostById(id: string): BlogPost | undefined {
     // Future Spring Boot endpoint: GET /api/public/blog/{id}
     return this.posts().find((post) => post.id === id);
   }
 
-  getAdminPosts(): BlogPost[] {
+  public getAdminPosts(): BlogPost[] {
     // Future Spring Boot endpoint: GET /api/admin/blog
     return this.posts();
   }
 
-  createPost(draft: BlogPostDraft): BlogPost {
+  public createPost(draft: BlogPostDraft): BlogPost {
     // Future Spring Boot endpoint: POST /api/admin/blog
     this.validateDraft(draft);
 
@@ -80,7 +80,7 @@ export class BlogService {
     return nextPost;
   }
 
-  updatePost(id: string, draft: BlogPostDraft): BlogPost {
+  public updatePost(id: string, draft: BlogPostDraft): BlogPost {
     // Future Spring Boot endpoint: PUT /api/admin/blog/{id}
     this.validateDraft(draft);
 
@@ -101,7 +101,7 @@ export class BlogService {
     return nextPost;
   }
 
-  deletePost(id: string): void {
+  public deletePost(id: string): void {
     // Future Spring Boot endpoint: DELETE /api/admin/blog/{id}
     const nextPosts = this.posts().filter((post) => post.id !== id);
 
@@ -221,7 +221,7 @@ export class BlogService {
     };
   }
 
-  createBlockId(): string {
+  public createBlockId(): string {
     return `block-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   }
 

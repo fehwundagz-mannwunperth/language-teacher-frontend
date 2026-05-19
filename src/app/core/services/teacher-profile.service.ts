@@ -5,7 +5,7 @@ import { TeacherProfile } from '../../models/teacher-profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class TeacherProfileService {
-  getProfile(): Observable<TeacherProfile> {
+  public getProfile(): Observable<TeacherProfile> {
     // Future Spring Boot endpoint: GET /api/public/profile
     return of({
       name: 'Kun Brigitta',

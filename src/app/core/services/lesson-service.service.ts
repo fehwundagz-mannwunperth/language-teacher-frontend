@@ -51,22 +51,22 @@ export class LessonServiceService {
 
   readonly lessonServices = this.items.asReadonly();
 
-  getPublicLessonServices(): LessonServiceItem[] {
+  public getPublicLessonServices(): LessonServiceItem[] {
     // Future Spring Boot endpoint: GET /api/public/lesson-services
     return this.items();
   }
 
-  getPublicLessonServiceById(id: string): LessonServiceItem | undefined {
+  public getPublicLessonServiceById(id: string): LessonServiceItem | undefined {
     // Future Spring Boot endpoint: GET /api/public/lesson-services/{id}
     return this.items().find((item) => item.id === id);
   }
 
-  getAdminLessonServices(): LessonServiceItem[] {
+  public getAdminLessonServices(): LessonServiceItem[] {
     // Future Spring Boot endpoint: GET /api/admin/lesson-services
     return this.items();
   }
 
-  createLessonService(draft: LessonServiceDraft): LessonServiceItem {
+  public createLessonService(draft: LessonServiceDraft): LessonServiceItem {
     // Future Spring Boot endpoint: POST /api/admin/lesson-services
     const currentItems = this.items();
 
@@ -86,7 +86,7 @@ export class LessonServiceService {
     return nextItem;
   }
 
-  updateLessonService(id: string, draft: LessonServiceDraft): LessonServiceItem {
+  public updateLessonService(id: string, draft: LessonServiceDraft): LessonServiceItem {
     // Future Spring Boot endpoint: PUT /api/admin/lesson-services/{id}
     this.validateDraft(draft);
 
@@ -107,7 +107,7 @@ export class LessonServiceService {
     return nextItem;
   }
 
-  deleteLessonService(id: string): void {
+  public deleteLessonService(id: string): void {
     // Future Spring Boot endpoint: DELETE /api/admin/lesson-services/{id}
     const nextItems = this.items().filter((item) => item.id !== id);
 
@@ -118,7 +118,7 @@ export class LessonServiceService {
     this.persist(nextItems);
   }
 
-  reorderLessonServices(ids: string[]): void {
+  public reorderLessonServices(ids: string[]): void {
     // Future Spring Boot endpoint: PUT /api/admin/lesson-services/order
     const currentItems = this.items();
     const orderedItems = ids

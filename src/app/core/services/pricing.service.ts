@@ -5,7 +5,7 @@ import { PricePackage } from '../../models/price-package.model';
 
 @Injectable({ providedIn: 'root' })
 export class PricingService {
-  getPricePackages(): Observable<PricePackage[]> {
+  public getPricePackages(): Observable<PricePackage[]> {
     // Future Spring Boot endpoint: GET /api/public/prices
     return of([
       {

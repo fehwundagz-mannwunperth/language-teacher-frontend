@@ -48,7 +48,7 @@ export class HomeComponent implements OnDestroy {
     return this.translationService.translate(key);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     window.clearInterval(this.carouselIntervalId);
   }
 

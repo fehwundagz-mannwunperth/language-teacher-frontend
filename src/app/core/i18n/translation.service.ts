@@ -25,12 +25,12 @@ export class TranslationService {
     () => this.languages.find((language) => language.code === this.currentLanguage()) ?? this.languages[0],
   );
 
-  setLanguage(language: LanguageCode): void {
+  public setLanguage(language: LanguageCode): void {
     this.language.set(language);
     localStorage.setItem(STORAGE_KEY, language);
   }
 
-  translate(key: TranslationKey): string {
+  public translate(key: TranslationKey): string {
     return TRANSLATIONS[this.currentLanguage()][key] ?? EN_TRANSLATIONS[key];
   }
 

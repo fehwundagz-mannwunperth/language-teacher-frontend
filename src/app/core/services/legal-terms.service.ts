@@ -5,7 +5,7 @@ import { LegalTerms } from '../../models/legal-terms.model';
 
 @Injectable({ providedIn: 'root' })
 export class LegalTermsService {
-  getTerms(): Observable<LegalTerms> {
+  public getTerms(): Observable<LegalTerms> {
     // Future Spring Boot endpoint: GET /api/public/legal/terms
     return of({
       sections: [
